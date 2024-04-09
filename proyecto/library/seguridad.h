@@ -10,7 +10,8 @@ class Seguridad {
    std::string decryptCaesarCipher(std::string text, int key);
    std::string encryptCaesarCipher(std::string text, int key);
    int Search_id();
+   bool MenuSeguridad(Usuario&);
 };
 
-bool MenuSeguridad(Usuario&);
+
 

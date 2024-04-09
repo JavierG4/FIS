@@ -10,7 +10,8 @@
 int main() {
   //Parte 1 Seguridad
   Usuario user;
-  bool resultado = MenuSeguridad(user);
+  Seguridad seguridad;
+  bool resultado = seguridad.MenuSeguridad(user);
   if (!resultado) {
     std::cout << "Error de inicio" << std::endl;
     return 0;
