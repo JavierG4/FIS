@@ -32,11 +32,11 @@ std::ostream& operator<<(std::ostream& out, const Usuario& usuario) {
 }
 
 std::istream& operator>>(std::istream& in, Usuario& usuario) {
-  in >> usuario.id_
-      >> usuario.username_
+  in >> usuario.username_
       >> usuario.nombre
       >> usuario.apellidos_
-      >> usuario.email_;
+      >> usuario.email_
+      >> usuario.id_;
   int reserva;
   while (in >> reserva) {
     usuario.reservas_.push_back(reserva);

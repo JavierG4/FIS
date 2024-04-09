@@ -16,4 +16,8 @@ int main() {
     std::cout << "Error de inicio" << std::endl;
     return 0;
   }
+
+  //Parte 2 Usuario
+  std::cout << "Bienvenido " << user.get_username() << std::endl;
+  std::cout << user << std::endl;
 }

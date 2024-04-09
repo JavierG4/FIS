@@ -1,6 +1,5 @@
 #include "seguridad.h"
 
-#include <string>
 
 std::string Seguridad::encryptCaesarCipher(std::string text, int key) {
   for (size_t i = 0; i < text.size(); ++i) {
@@ -8,16 +7,23 @@ std::string Seguridad::encryptCaesarCipher(std::string text, int key) {
       char offset = isupper(text[i]) ? 'A' : 'a';
       text[i] = static_cast<char>((text[i] - offset + key) % 26 + offset);
     } else if (isdigit(text[i])) {
-      text[i] = static_cast<char>(((text[i] - '0' + key) % 26) + 'A');
+      text[i] = static_cast<char>(((text[i] - '0' + key) % 10) + '0');
     }
   }
   return text;
 }
 
 std::string Seguridad::decryptCaesarCipher(std::string text, int key) {
-  return encryptCaesarCipher(text, 26 - key);
+  for (size_t i = 0; i < text.size(); ++i) {
+    if (isalpha(text[i])) {
+      char offset = isupper(text[i]) ? 'A' : 'a';
+      text[i] = static_cast<char>((text[i] - offset + 26 - key) % 26 + offset);
+    } else if (isdigit(text[i])) {
+      text[i] = static_cast<char>(((text[i] - '0' + 10 - key) % 10) + '0');
+    }
+  }
+  return text;
 }
-
 bool Seguridad::Sign_in(std::string username, std::string password, Usuario& user) {
   
   // Comprobar si ya existe el usuario
@@ -55,7 +61,7 @@ bool Seguridad::Sign_in(std::string username, std::string password, Usuario& use
   }
   std::cout << "Escriba su nombre sin apellidos" << std::endl;
   std::cin >> nombre;
-  std::cout << "Escriba sus apellidos" << std::endl;
+  std::cout << "Escriba su primer apellido" << std::endl;
   std::cin >> apellidos;
 
   //Creación del usuario
@@ -82,12 +88,10 @@ bool Seguridad::Sign_in(std::string username, std::string password, Usuario& use
   //Se añade al fichero user.txt el nuevo
   std::ofstream out("../base_de_datos/seguridad/user.txt", std::ios_base::app);
   out << username << " ";
-  std::string final_passwd = encryptCaesarCipher(password, user.get_id());
-  std::cout << final_passwd << "\n";
-  std::cout << password << "\n";
+  std::string final_passwd = encryptCaesarCipher(password, user.get_id());;
   out << final_passwd << "\n";
   out.close();
-  //std::system("clear");
+  std::system("clear");
   return true;
 }
 
@@ -101,7 +105,7 @@ bool Seguridad::MenuSeguridad(Usuario& user) {
     std::cin >> decision;
   }
   if ( decision == 0 ) { // log in
-    while (resultado == false || contador < 3 ) { 
+    while (resultado == false && contador < 3 ) { 
       std::string username;
       std::cout << "Escriba su usuario " << std::endl;
       std::cin >> username;
@@ -149,13 +153,22 @@ bool Seguridad::Log_in(std::string username, std::string password, Usuario& user
   std::ifstream file("../base_de_datos/seguridad/user.txt");
   std::string line;
   while (getline(file,line)) {
+    std::istringstream iss(line);
     std::string username1;
-    file >> username1;
+    iss >> username1;
     if (username1 == username) {
       std::string password1;
-      file >> password1;
-      std::string final_passwd = decryptCaesarCipher(password1, user.get_id());
+      iss >> password1;
+      std::string final_passwd = encryptCaesarCipher(password, user.get_id());
       if (password == final_passwd) {
+        std::cout << "Has iniciado sesión" << std::endl;
+        std::string filename = "../base_de_datos/usuarios/" + username + ".txt";
+        std::ifstream userFile(filename);
+        if(!userFile.is_open()) {
+          std::cout << "No se ha podido abrir el archivo" << std::endl;
+          return false;
+        }
+        userFile >> user;
         return true;
       } else {
         std::cout << "Contraseña incorrecta" << std::endl;
