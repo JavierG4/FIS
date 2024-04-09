@@ -12,5 +12,5 @@ class Seguridad {
    int Search_id();
 };
 
-bool MenuSeguridad();
+bool MenuSeguridad(Usuario&);
 

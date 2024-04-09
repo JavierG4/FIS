@@ -30,7 +30,7 @@ bool Seguridad::Sign_in(std::string username, std::string password, Usuario& use
       return false;
     }
   }
-  file.close()
+  file.close();
 
   //Toma de datos de usuario
   std::cout << "No existe nadie con ese username" << std::endl;
@@ -82,7 +82,7 @@ bool Seguridad::Sign_in(std::string username, std::string password, Usuario& use
   out << username << " ";
   std::string final_passwd = encryptCaesarCipher(password);
   out << final_passwd << "\n";
-  out.close()
+  out.close();
   std::system("clear");
   return true;
 }
