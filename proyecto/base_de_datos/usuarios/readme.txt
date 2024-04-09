@@ -1,0 +1,1 @@
+En esta carpeta,  cada usuario tiene su carpeta dentro en la que tendra sus ficheros correspondientes a sus reservas.
