@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <usuario.h>
+#include <cstdlib>
 
 class Seguridad {
  public:

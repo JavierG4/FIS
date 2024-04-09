@@ -17,6 +17,8 @@ std::string Seguridad::decryptCaesarCipher(std::string text, int key) {
 }
 
 bool Seguridad::Sign_in(std::string username, std::string password, Usuario& user) {
+  
+  // Comprobar si ya existe el usuario
   std::ifstream file("../base_de_datos/seguridad/user.txt");
   std::string line;
   while (getline(file,line)) {
@@ -28,6 +30,9 @@ bool Seguridad::Sign_in(std::string username, std::string password, Usuario& use
       return false;
     }
   }
+  file.close()
+
+  //Toma de datos de usuario
   std::cout << "No existe nadie con ese username" << std::endl;
   std::cout << "Es necesario que escribas unos datos para completar tu ficha técnica" << std::endl;
   int id = Search_id();
@@ -57,6 +62,29 @@ bool Seguridad::Sign_in(std::string username, std::string password, Usuario& use
   user.set_id(id);
   user.set_nombre(nombre);
   user.set_username(username);
+
+  // Crear el txt de usuario nuevo
+  std::string filename = "../base_de_datos/seguridad/" + username + ".txt";
+  std::ofstream userFile(filename);
+
+  // Añadir datos al archivo
+  userFile << username << "\n";
+  userFile << nombre << "\n";
+  userFile << apellidos << "\n";
+  userFile << mail1 << "\n";
+  userFile <<  id << "\n";
+
+  // Cerrar el archivo cuando hayas terminado
+  userFile.close();
+
+  //Se añade al fichero user.txt el nuevo
+  std::ofstream out("../base_de_datos/seguridad/user.txt", std::ios_base::app);
+  out << username << " ";
+  std::string final_passwd = encryptCaesarCipher(password);
+  out << final_passwd << "\n";
+  out.close()
+  std::system("clear");
+  return true;
 }
 
 bool MenuSeguridad(Usuario& user) {
@@ -88,4 +116,15 @@ bool MenuSeguridad(Usuario& user) {
     std::cin >> password;
     resultado = Sign_in(username, password, user);
   }
+}
+
+int Seguridad::Search_id() {
+  std::ifstream file("../base_de_datos/seguridad/id.txt");
+  int numero;
+  file >> numero;
+  file.close();
+  std::ofstream file1("../base_de_datos/seguridad/id.txt");
+  file1 << numero + 1;
+  file1.close();
+  return numero;
 }
