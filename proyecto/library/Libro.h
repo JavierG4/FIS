@@ -3,7 +3,7 @@
 using namespace std;
 
 class Libro {
-public:
+ public:
     // constructor
     Libro(string nombre_libro) {
     nombre_libro_ = nombre_libro;
@@ -40,7 +40,7 @@ public:
       cout << "Estado: " << (estado_ ? "Reservado" : "Disponible") << endl;
     }
 
-private:
+ private:
     string nombre_libro_;
     string ruta_archivo_;
     bool estado_;
