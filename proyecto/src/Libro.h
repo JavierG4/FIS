@@ -46,4 +46,4 @@ private:
     bool estado_;
     string autor_;
     string fecha_;
-}
+};
