@@ -1,5 +1,5 @@
 #include "seguridad.h"
-
+#include <filesystem>
 
 std::string Seguridad::encryptCaesarCipher(std::string text, int key) {
   for (size_t i = 0; i < text.size(); ++i) {
@@ -72,7 +72,9 @@ bool Seguridad::Sign_in(std::string username, std::string password, Usuario& use
   user.set_username(username);
 
   // Crear el txt de usuario nuevo
-  std::string filename = "../base_de_datos/usuarios/" + username + ".txt";
+  std::string directory = "../base_de_datos/usuarios/" + username + "/";
+  std::filesystem::create_directories(directory);
+  std::string filename = "../base_de_datos/usuarios/" + username + "/" + username + ".txt";
   std::ofstream userFile(filename);
 
   // Añadir datos al archivo
@@ -162,7 +164,7 @@ bool Seguridad::Log_in(std::string username, std::string password, Usuario& user
       std::string final_passwd = encryptCaesarCipher(password, user.get_id());
       if (password == final_passwd) {
         std::cout << "Has iniciado sesión" << std::endl;
-        std::string filename = "../base_de_datos/usuarios/" + username + ".txt";
+        std::string filename = "../base_de_datos/usuarios/" + username + "/" + username + ".txt";
         std::ifstream userFile(filename);
         if(!userFile.is_open()) {
           std::cout << "No se ha podido abrir el archivo" << std::endl;
