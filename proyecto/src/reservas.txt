@@ -1,0 +1,120 @@
+Reserva: 
+Aula 1
+Día lunes
+Sesión tarde
+Aforo máximo: 15 personas.
+Recuerde: No está permitimo comer ni beber en las aulas
+Reserva: 
+Aula 2
+Día martes
+Sesión tarde
+Aforo máximo: 15 personas.
+Recuerde: No está permitimo comer ni beber en las aulas
+Reserva: 
+Aula 1
+Día lunes
+Sesión mañana
+Aforo máximo: 15 personas.
+Recuerde: No está permitimo comer ni beber en las aulas
+Reserva: 
+Aula 1
+Día lunes
+Sesión tarde
+Aforo máximo: 15 personas.
+Recuerde: No está permitimo comer ni beber en las aulas
+Reserva: 
+Aula 1
+Día lunes
+Sesión mañana
+Aforo máximo: 15 personas.
+Recuerde: No está permitimo comer ni beber en las aulas
+Reserva: 
+Aula 1
+Día martes
+Sesión mañana
+Aforo máximo: 15 personas.
+Recuerde: No está permitimo comer ni beber en las aulas
+Reserva: 
+Aula 2
+Día miércoles
+Sesión tarde
+Aforo máximo: 15 personas.
+Recuerde: No está permitimo comer ni beber en las aulas
+Reserva: 
+Aula 2
+Día lunes
+Sesión mañana
+Aforo máximo: 15 personas.
+Recuerde: No está permitimo comer ni beber en las aulas
+Reserva: 
+Aula 4
+Día domingo
+Sesión mañana
+Aforo máximo: 15 personas.
+Recuerde: No está permitimo comer ni beber en las aulas
+Reserva: 
+Aula 4
+Día domingo
+Sesión mañana
+Aforo máximo: 15 personas.
+Recuerde: No está permitimo comer ni beber en las aulas
+Reserva: 
+Aula 4
+Día domingo
+Sesión tarde
+Aforo máximo: 15 personas.
+Recuerde: No está permitimo comer ni beber en las aulas
+Reserva: 
+Aula 4
+Día: lunes
+Sesión tarde
+Aforo máximo: 15 personas.
+Recuerde: No está permitimo comer ni beber en las aulas
+Reserva: 
+Aula 3
+Día: miércoles
+Sesión mañana
+Aforo máximo: 15 personas.
+Recuerde: No está permitimo comer ni beber en las aulas
+Reserva: 
+Aula 4
+Día: miercoles
+Sesión mañana
+Aforo máximo: 15 personas.
+Recuerde: No está permitimo comer ni beber en las aulas
+Reserva: 
+Aula 4
+Día: martes
+Sesión tarde
+Aforo máximo: 15 personas.
+Recuerde: No está permitimo comer ni beber en las aulas
+Reserva: 
+Aula 4
+Día: viernes
+Sesión mañana
+Aforo máximo: 15 personas.
+Recuerde: No está permitimo comer ni beber en las aulas
+Reserva: 
+Aula 4
+Día: viernes
+Sesión mañana
+Aforo máximo: 15 personas.
+Recuerde: No está permitimo comer ni beber en las aulas
+Reserva: 
+Aula 4
+Día: viernes
+Sesión mañana
+Aforo máximo: 15 personas.
+Recuerde: No está permitimo comer ni beber en las aulas
+Reserva: 
+Aula 3
+Día: miercoles
+Sesión tarde
+Aforo máximo: 15 personas.
+Recuerde: No está permitimo comer ni beber en las aulas
+Reserva: 
+Aula 2
+Día: sabado
+Sesión tarde
+Aforo máximo: 15 personas.
+Recuerde: No está permitimo comer ni beber en las aulas
