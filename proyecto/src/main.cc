@@ -11,7 +11,7 @@
 #include "aulas.h"
 
 int main() {
- /* //Parte 1 Seguridad
+ //Parte 1 Seguridad
   Usuario user;
   Seguridad seguridad;
   bool resultado = seguridad.MenuSeguridad(user);
@@ -22,7 +22,7 @@ int main() {
 
   //Parte 2 Usuario
   std::cout << "Bienvenido " << user.get_username() << std::endl;
-  std::cout << user << std::endl; */
+  std::cout << user << std::endl; 
 
   /*Parte horario
   cuando tengamos el menú puede haber dos opciones, solo ver horario o reservar aulas*/

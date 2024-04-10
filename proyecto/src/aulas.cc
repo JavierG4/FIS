@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <string>
+#include <filesystem>
 
 #define STYLE_ITALIC  "\033[3m"
 #define COLOR_RESET   "\033[0m"
@@ -47,22 +48,19 @@ void reservar_aula(Horario& horario) {
   } else {
     horario.set_estado(dia, aula, sesion, nombre);
     std::cout << "Reserva realizada con éxito\n"
-              << "Nombre de la reserva " << nombre << "\n"
-              << "Aula " << aula << "\n"
+              << "Nombre de la reserva: " << nombre << "\n"
+              << "Aula: " << aula << "\n"
               << "Día de la semana: " << semana[dia] << "\n"
-              << "Sesión " << (sesion == 0 ? "Mañana" : "Tarde") << "\n"
+              << "Sesión: " << (sesion == 0 ? "Mañana" : "Tarde") << "\n"
               << "Aforo máximo: 15 personas." << "\n"
               << "Recuerde: " << STYLE_ITALIC << "No está permitimo comer ni beber en las aulas" << COLOR_RESET << std::endl;
-
-    std::ofstream archivo("reservas.txt", std::ios::app);
+    std::string ruta_reserva = "../base_de_datos/usuarios/" + nombre + "/" + "reserva_" + semana[dia] +  ".txt";
+    std::ofstream archivo(ruta_reserva);
     if (archivo.is_open()) {
-      archivo << "Reserva: " << "\n"
-              << "Nombre de la reserva " << nombre << "\n"
-              << "Aula " << aula << "\n"
+      archivo << "Nombre de la reserva: " << nombre << "\n"
+              << "Aula: " << aula << "\n"
               << "Día: " << semana[dia] << "\n"
-              << "Sesión " << (sesion == 0 ? "mañana" : "tarde") << "\n"
-              << "Aforo máximo: 15 personas." << "\n"
-              << "Recuerde: No está permitimo comer ni beber en las aulas" << std::endl;
+              << "Sesión: " << (sesion == 0 ? "mañana" : "tarde") << "\n";
       archivo.close();
     } else {
       std::cout << "No se pudo abrir el archivo para guardar la reserva." << std::endl;
@@ -109,6 +107,10 @@ void anular_reserva_aula(Horario& horario) {
   } else if (horario.get_estado(dia, aula, sesion) == nombre) {
     std::string libre = "Libre";
     horario.set_estado(dia, aula, sesion, libre);
+    std::string ruta_reserva = "../base_de_datos/usuarios/" + nombre + "/" + "reserva_" + semana[dia] +  ".txt";
+    if (std::filesystem::exists(ruta_reserva)) {
+      std::filesystem::remove(ruta_reserva);
+    }
     std::cout << "La reserva se ha anulado" << std::endl;
   }
   std::cout << STYLE_ITALIC << BOLD << "HORARIO " << COLOR_RESET << std::endl;
