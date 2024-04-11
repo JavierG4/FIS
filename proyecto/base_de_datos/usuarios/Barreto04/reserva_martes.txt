@@ -1,0 +1,4 @@
+Nombre de la reserva: Barreto04
+Aula: 2
+Día: martes
+Sesión: tarde
