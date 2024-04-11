@@ -1,22 +1,61 @@
 #include "horario.h"
 #include <cassert>
+#include <sstream>
+#include <fstream>
 
 #define COLOR_VIOLET  "\033[35m"
 #define COLOR_CYAN    "\033[36m"
 #define COLOR_RESET   "\033[0m"
 
-//constructor
-Horario::Horario() : horario_biblio_(7, std::vector<std::string>(8, "Libre")) {}
-//setter
+/**
+ * @brief constructor del objeto Horario
+ */
+Horario::Horario() {
+  ruta_fichero_ = "../base_de_datos/horario/horario.txt";
+  std::ifstream horario(ruta_fichero_);
+  if (horario.is_open()) {
+    std::string linea;
+    while (std::getline(horario, linea)) {
+      std::vector<std::string> dias;
+      std::string sesion;
+      std::istringstream line(linea);
+      while (line >> sesion) {
+        dias.push_back(sesion); 
+      }
+      horario_biblio_.push_back(dias); 
+    }
+  }
+}
+
+/**
+ * @brief setter del estado del aula
+ * @param dia 
+ * @param aula 
+ * @param sesion 
+ * @param estado 
+ */
 void Horario::set_estado(int dia, int aula, int sesion, std::string estado) {
   assert (dia >= 0 && dia < 7 && aula >= 1 && aula <= 4 && sesion >= 0 && sesion <= 1);
   horario_biblio_[dia][((aula - 1)* 2) + sesion] = estado;
 }
-//getter
+
+/**
+ * @brief getter del estado del aula
+ * @param dia 
+ * @param aula 
+ * @param sesion 
+ * @return std::string 
+ */
 std::string Horario::get_estado(int dia, int aula, int sesion) const {
   return horario_biblio_[dia][((aula - 1) * 2) + sesion]; 
 }
-//imprimir
+
+/**
+ * @brief operador de inserción
+ * @param out 
+ * @param horario 
+ * @return std::ostream& 
+ */
 std::ostream& operator<<(std::ostream& out, const Horario& horario) {
   std::vector<std::string> semana = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"};
   for (int i = 0; i < semana.size(); i++) {
@@ -44,9 +83,24 @@ std::ostream& operator<<(std::ostream& out, const Horario& horario) {
       }
       if (j != 4) {
         out << " | ";
-       }
+      }
     }
     out << std::endl;
   }
   return out;
+}
+
+/**
+ * @brief método para guardar la información de un horario en un fichero
+ */
+void Horario::guardar_horario() const {
+  std::ofstream horario(ruta_fichero_); 
+  if (horario.is_open()) {
+    for (const auto& dia : horario_biblio_) {
+      for (const auto& sesion : dia) {
+        horario << sesion << " "; 
+      }
+      horario << std::endl;
+    }
+  }
 }

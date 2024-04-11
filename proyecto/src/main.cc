@@ -25,7 +25,7 @@ int main() {
   std::cout << user << std::endl; 
 
   /*Parte horario
-  cuando tengamos el menú puede haber dos opciones, solo ver horario o reservar aulas*/
+  cuando tengamos el menú puede haber dos opciones, el usuario puede: ver horario, reservar aulas o anular aulas*/
   Horario horario;
   //reservar aulas
   reservar_aula(horario);
@@ -33,4 +33,7 @@ int main() {
   std::cout << horario << std::endl;
   //anular reserva
   anular_reserva_aula(horario);
+  //guardar horario, hacer siempre antes de que acabe el programa
+  horario.guardar_horario();
+  return 0;
 }

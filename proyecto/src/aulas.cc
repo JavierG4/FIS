@@ -8,6 +8,10 @@
 #define COLOR_RESET   "\033[0m"
 #define BOLD     "\033[1m" 
 
+/**
+ * @brief función para reservar aulas
+ * @param horario 
+ */
 void reservar_aula(Horario& horario) {
   std::cout << STYLE_ITALIC << BOLD << "HORARIO " << COLOR_RESET << std::endl;
   std::cout << horario << std::endl;
@@ -68,7 +72,10 @@ void reservar_aula(Horario& horario) {
   }
 }
 
-
+/**
+ * @brief función para anular la reserva de aulas
+ * @param horario 
+ */
 void anular_reserva_aula(Horario& horario) {
   std::vector<std::string> semana = {"lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"};
   std::string dia_de_la_semana, nombre;
@@ -116,3 +123,4 @@ void anular_reserva_aula(Horario& horario) {
   std::cout << STYLE_ITALIC << BOLD << "HORARIO " << COLOR_RESET << std::endl;
   std::cout << horario << std::endl;
 }
+
