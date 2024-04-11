@@ -1,4 +1,0 @@
-Nombre de la reserva: Barreto04
-Aula: 1
-Día: lunes
-Sesión: mañana

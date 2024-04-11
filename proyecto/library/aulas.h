@@ -6,4 +6,4 @@
 void reservar_aula(Horario& horario);
 void anular_reserva_aula(Horario& horario);
 
-#endif
+#endif //AULAS_H

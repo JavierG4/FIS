@@ -11,7 +11,6 @@
  * @brief constructor del objeto Horario
  */
 Horario::Horario() {
-  ruta_fichero_ = "../base_de_datos/horario/horario.txt";
   std::ifstream horario(ruta_fichero_);
   if (horario.is_open()) {
     std::string linea;
