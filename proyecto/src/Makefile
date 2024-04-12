@@ -22,4 +22,4 @@ actu:
 	git commit -m actualización
 	git push
 program:
-	g++ -g -I../library -o Biblioteca usuario.cc main.cc seguridad.cc horario.cc aulas.cc
+	g++ -g -I../library -o Biblioteca usuario.cc main.cc seguridad.cc horario.cc aulas.cc info_biblio.cc

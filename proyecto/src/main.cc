@@ -9,8 +9,11 @@
 
 #include "horario.h"
 #include "aulas.h"
+#include "info_biblio.h"
 
 int main() {
+  // info
+  get_informacion();
  //Parte 1 Seguridad
   Usuario user;
   Seguridad seguridad;
