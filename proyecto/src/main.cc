@@ -4,6 +4,9 @@
 #include <stdlib.h>
 #include <fstream>
 #include <utility>
+
+#include "menu.h"
+
 #include "seguridad.h"
 #include "usuario.h"
 
@@ -12,31 +15,40 @@
 #include "info_biblio.h"
 
 int main() {
-  // info
+  std::cout << std::endl;
+  // Información de la biblioteca
   get_informacion();
- //Parte 1 Seguridad
-  Usuario user;
-  Seguridad seguridad;
-  bool resultado = seguridad.MenuSeguridad(user);
-  if (!resultado) {
-    std::cout << "Error de inicio" << std::endl;
-    return 0;
-  }
-
-  //Parte 2 Usuario
-  std::cout << "Bienvenido " << user.get_username() << std::endl;
-  std::cout << user << std::endl; 
-
-  /*Parte horario
-  cuando tengamos el menú puede haber dos opciones, el usuario puede: ver horario, reservar aulas o anular aulas*/
+  // Menú
+  bool sesioniniciada = false;
+  bool registradoaulaopt = false;
+  // bool anularreserva = false;
   Horario horario;
-  //reservar aulas
-  reservar_aula(horario, user);
-  //ver horario 
-  std::cout << horario << std::endl;
-  //anular reserva
-  anular_reserva_aula(horario, user);
+  if (MostrarMenu(sesioniniciada)) {
+    // Seguridad
+    Usuario user;
+    Seguridad seguridad;
+    bool resultado = seguridad.MenuSeguridad(user);
+    if (!resultado) {
+      std::cout << "Error de inicio" << std::endl;
+    } else {
+      // Usuario
+      std::cout << "Bienvenido " << user.get_username() << std::endl;
+      std::cout << user << std::endl; 
+      // Reservar aulas
+      if (MenuRegistrado(registradoaulaopt) == true) {
+        reservar_aula(horario, user);
+        // Mostrar horario
+        std::cout << horario << std::endl;
+      } else {
+        anular_reserva_aula(horario, user);
+      }
+    }
+  }
   //guardar horario, hacer siempre antes de que acabe el programa
   horario.guardar_horario();
-  return 0;
+  
+  // //anular reserva
+  // anular_reserva_aula(horario, user);
+
+  // return 0;
 }
