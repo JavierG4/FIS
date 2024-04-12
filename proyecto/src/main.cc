@@ -21,7 +21,6 @@ int main() {
   // Menú
   bool sesioniniciada = false;
   bool registradoaulaopt = false;
-  // bool anularreserva = false;
   Horario horario;
   if (MostrarMenu(sesioniniciada)) {
     // Seguridad
@@ -46,9 +45,6 @@ int main() {
   }
   //guardar horario, hacer siempre antes de que acabe el programa
   horario.guardar_horario();
-  
-  // //anular reserva
-  // anular_reserva_aula(horario, user);
 
-  // return 0;
+  return 0;
 }
