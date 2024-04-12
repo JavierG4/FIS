@@ -169,10 +169,10 @@ bool Seguridad::Log_in(std::string username, std::string password, Usuario& user
       std::string password1;
       iss >> password1;
       std::string final_passwd = encryptCaesarCipher(password, user.get_id());
-      std::cout << user.get_id() << std::endl;
-      std::cout << final_passwd << std::endl;
-      std::cout << password1 << std::endl;
-      std::cout << password << std::endl;
+      //std::cout << user.get_id() << std::endl;
+      //std::cout << final_passwd << std::endl;
+      //std::cout << password1 << std::endl;
+      //std::cout << password << std::endl;
       if (password1 == final_passwd) {
         std::cout << "Has iniciado sesión" << std::endl;
         return true;
