@@ -12,7 +12,7 @@
  * @brief función para reservar aulas
  * @param horario 
  */
-void reservar_aula(Horario& horario) {
+void reservar_aula(Horario& horario,Usuario& usuario) {
   std::cout << STYLE_ITALIC << BOLD << "HORARIO " << COLOR_RESET << std::endl;
   std::cout << horario << std::endl;
   std::vector<std::string> semana = {"lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"};
@@ -58,7 +58,7 @@ void reservar_aula(Horario& horario) {
               << "Sesión: " << (sesion == 0 ? "Mañana" : "Tarde") << "\n"
               << "Aforo máximo: 15 personas." << "\n"
               << "Recuerde: " << STYLE_ITALIC << "No está permitimo comer ni beber en las aulas" << COLOR_RESET << std::endl;
-    std::string ruta_reserva = "../base_de_datos/usuarios/" + nombre + "/" + "reserva_" + semana[dia] +  ".txt";
+    std::string ruta_reserva = "../base_de_datos/usuarios/" + usuario.get_username() + "/" + "reserva_" + nombre +  ".txt";
     std::ofstream archivo(ruta_reserva);
     if (archivo.is_open()) {
       archivo << "Nombre de la reserva: " << nombre << "\n"
@@ -76,7 +76,7 @@ void reservar_aula(Horario& horario) {
  * @brief función para anular la reserva de aulas
  * @param horario 
  */
-void anular_reserva_aula(Horario& horario) {
+void anular_reserva_aula(Horario& horario,Usuario& usuario) {
   std::vector<std::string> semana = {"lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"};
   std::string dia_de_la_semana, nombre;
   int aula, sesion, dia = -1;
@@ -114,7 +114,7 @@ void anular_reserva_aula(Horario& horario) {
   } else if (horario.get_estado(dia, aula, sesion) == nombre) {
     std::string libre = "Libre";
     horario.set_estado(dia, aula, sesion, libre);
-    std::string ruta_reserva = "../base_de_datos/usuarios/" + nombre + "/" + "reserva_" + semana[dia] +  ".txt";
+    std::string ruta_reserva = "../base_de_datos/usuarios/" + usuario.get_username() + "/" + "reserva_" + nombre +  ".txt";
     if (std::filesystem::exists(ruta_reserva)) {
       std::filesystem::remove(ruta_reserva);
     }
