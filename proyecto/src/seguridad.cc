@@ -154,6 +154,13 @@ int Seguridad::Search_id() {
 bool Seguridad::Log_in(std::string username, std::string password, Usuario& user) {
   std::ifstream file("../base_de_datos/seguridad/user.txt");
   std::string line;
+  std::string filename = "../base_de_datos/usuarios/" + username + "/" + username + ".txt";
+  std::ifstream userFile(filename);
+  if(!userFile.is_open()) {
+    std::cout << "No se ha podido abrir el archivo" << std::endl;
+    return false;
+  }
+  userFile >> user;
   while (getline(file,line)) {
     std::istringstream iss(line);
     std::string username1;
@@ -162,15 +169,12 @@ bool Seguridad::Log_in(std::string username, std::string password, Usuario& user
       std::string password1;
       iss >> password1;
       std::string final_passwd = encryptCaesarCipher(password, user.get_id());
-      if (password == final_passwd) {
+      std::cout << user.get_id() << std::endl;
+      std::cout << final_passwd << std::endl;
+      std::cout << password1 << std::endl;
+      std::cout << password << std::endl;
+      if (password1 == final_passwd) {
         std::cout << "Has iniciado sesión" << std::endl;
-        std::string filename = "../base_de_datos/usuarios/" + username + "/" + username + ".txt";
-        std::ifstream userFile(filename);
-        if(!userFile.is_open()) {
-          std::cout << "No se ha podido abrir el archivo" << std::endl;
-          return false;
-        }
-        userFile >> user;
         return true;
       } else {
         std::cout << "Contraseña incorrecta" << std::endl;

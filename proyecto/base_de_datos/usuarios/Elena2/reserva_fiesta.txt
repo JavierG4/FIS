@@ -1,0 +1,4 @@
+Nombre de la reserva: fiesta
+Aula: 1
+Día: lunes
+Sesión: mañana
