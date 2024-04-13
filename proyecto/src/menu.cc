@@ -47,11 +47,11 @@ bool MenuRegistrado(bool registradoaulaopt) {
   int opcion {0};
   while (!salir) {
     std::cout << "Elija la opción que desee realizar:\n"
-              << "(1) Reservar libros\n"
-              << "(2) Reservar aulas\n"
-              << "(3) Anular reserva de aula\n"
-              << "(4) Devolver libro\n"
-              << "(5) Ver foro\n"
+              << "(1) Reservar libros 📝📕\n"
+              << "(2) Reservar aulas 📝🪑\n"
+              << "(3) Anular reserva de aula 🪑\n"
+              << "(4) Devolver libro 📕\n"
+              << "(5) Ver foro 🗣️\n"
               << "(6) Salir";
     std::cout << std::endl;
     std::cin >> opcion;
