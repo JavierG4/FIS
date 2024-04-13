@@ -32,7 +32,7 @@ void Libro::mostrar_informacion() {
     cout << "Nombre: " << nombre_libro_ << endl;
     cout << "Autor: " << autor_ << endl;
     cout << "Fecha de publicación: " << fecha_ << endl;
-    cout << "Estado: " << (estado_ ? "Reservado" : "Disponible") << endl;
+    cout << "Disponibilidad: " << (estado_ ? "Reservado" : "Disponible") << endl;
 }
 
 void Libro::cargar_info() {
