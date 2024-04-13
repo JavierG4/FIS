@@ -77,9 +77,8 @@ void reservar_aula(Horario& horario,Usuario& usuario) {
  * @param horario 
  */
 void anular_reserva_aula(Horario& horario,Usuario& usuario) {
-  std::vector<std::string> semana = {"lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"};
-  std::string dia_de_la_semana, nombre;
-  int aula, sesion, dia = -1;
+  ver_reservas_aulas(usuario);
+  std::string nombre;
   std::cout << STYLE_ITALIC << BOLD << "ANULAR RESERVA" << COLOR_RESET << std::endl;
   std::cout << "→ Nombre de la reserva: ";
   std::cin >> nombre;
@@ -95,5 +94,27 @@ void anular_reserva_aula(Horario& horario,Usuario& usuario) {
   std::cout << STYLE_ITALIC << BOLD << "HORARIO " << COLOR_RESET << std::endl;
   std::cout << horario << std::endl;
 }
-
+/**
+ * @brief función para ver las reservas de un usuario
+ * @param usuario 
+ */
+void ver_reservas_aulas(Usuario& usuario) {
+  std::cout << STYLE_ITALIC << BOLD << "RESERVAS" << COLOR_RESET << std::endl;
+  std::string ruta_reserva = "../base_de_datos/usuarios/" + usuario.get_username();
+  for (const auto& entry : std::filesystem::directory_iterator(ruta_reserva)) {
+    auto filename = entry.path().filename().string();
+    if (filename.find("reserva") == 0)  {
+      std::ifstream file(entry.path());
+      if (file) { 
+        std::string line;
+        while (getline(file, line)) {
+          std::cout << line << std::endl;
+        }
+      } else {
+        std::cerr << "Error al abrir el archivo " << filename << std::endl;
+      }
+      file.close();
+    }
+  }
+}
 

@@ -102,7 +102,9 @@ void Horario::guardar_horario() const {
     }
   }
 }
-
+/**
+ * @brief método para buscar información concreta en el horario
+ */
 bool Horario::buscar_reserva(const std::string& nombre) {
   for (auto& dia : horario_biblio_) {
     for (auto& sesion : dia) {
