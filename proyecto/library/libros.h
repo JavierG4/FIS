@@ -1,44 +1,20 @@
 #include <iostream>
-#include <string.h> 
+#include <string>
+#include <fstream>
+
 using namespace std;
 
 class Libro {
 public:
-    // constructor
-    Libro(string nombre_libro) {
-    nombre_libro_ = nombre_libro;
-    ruta_archivo_ = "../base_de_datos/repositorio_libros/" + nombre_libro + ".txt";
-    cargar_info();
-    }
+    // Constructor
+    Libro(string nombre_libro);
 
-    bool es_disponible() {
-        return estado_ == 0;
-    }
-
-    void reservar_libro() {
-        estado_ = 1;
-        guardar_info();
-    }
-
-    void devolver_libro() {
-        estado_ = 0;
-        guardar_info();
-    }
-
-    string get_autor() {
-        return autor_;
-    }
-
-    string get_fecha() {
-        return fecha_;
-    }
-
-    void mostrar_informacion() {
-      cout << "Nombre: " << nombre_libro_ << endl;
-      cout << "Autor: " << autor_ << endl;
-      cout << "Fecha de publicación: " << fecha_ << endl;
-      cout << "Estado: " << (estado_ ? "Reservado" : "Disponible") << endl;
-    }
+    bool es_disponible();
+    void reservar_libro();
+    void devolver_libro();
+    string get_autor();
+    string get_fecha();
+    void mostrar_informacion();
 
 private:
     string nombre_libro_;
@@ -47,10 +23,6 @@ private:
     string autor_;
     string fecha_;
 
-void cargar_info() {
-
-}
-void guardar_info() {
-
-}
+    void cargar_info();
+    void guardar_info();
 };
