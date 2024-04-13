@@ -2,7 +2,7 @@
 #include "usuario.h"
 #include "horario.h"
 #include "aulas.h"
-#include "libros.h"
+#include "../library/libros.h"
 
 
 bool MostrarMenu(bool sesioniniciada) {
