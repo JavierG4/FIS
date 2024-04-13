@@ -56,14 +56,24 @@ bool MenuRegistrado(bool registradoaulaopt) {
               << "(6) Salir";
     std::cout << std::endl;
     std::cin >> opcion;
+
     switch(opcion) {
-      case 1:
-        std::string nombre_libro;
+      case 1: {
+        std::string nombre_libro_reserva;
         std::cout << "Introduce el nombre del libro a reservar: " << std::endl;
-        std::cin >> nombre_libro;
-        Libro libro(nombre_libro);
+        std::getline(std::cin, nombre_libro_reserva); // Use getline() to handle spaces
+
+        if (nombre_libro_reserva.empty()) {
+          std::cout << "Error: El nombre del libro no puede estar vacío." << std::endl;
+          // Handle empty input error (e.g., prompt again, return to menu)
+          break;
+        }
+
+        Libro libro(nombre_libro_reserva);
         libro.reservar_libro();
         break;
+  }
+        
       case 2:
         registradoaulaopt = true;
         return registradoaulaopt;
