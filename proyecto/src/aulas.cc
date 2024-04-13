@@ -83,44 +83,17 @@ void anular_reserva_aula(Horario& horario,Usuario& usuario) {
   std::cout << STYLE_ITALIC << BOLD << "ANULAR RESERVA" << COLOR_RESET << std::endl;
   std::cout << "→ Nombre de la reserva: ";
   std::cin >> nombre;
-  std::cout << "→ Seleccione el día para la reserva en minúsculas (lunes, martes, ...): ";
-  std::cin >> dia_de_la_semana;
-  for (int i = 0; i < semana.size(); i++) {
-    if (semana[i] == dia_de_la_semana) {
-      dia = i;
-    }
-  }
-  if (dia == -1) {
-    std::cerr << "El día seleccionado no es válido" << std::endl;
-    return;
-  }
-
-  std::cout << "→ Seleccione el aula para la reserva (1-4): ";
-  std::cin >> aula;
-  if (aula < 1 || aula > 4) {
-    std::cout << "La aula seleccionada no es válida" << std::endl;
-    return; 
-  }
-
-  std::cout << "→ Seleccione la sesión para anular la reserva. Para ello, indique el número correspondiente (Mañana = 0 ó Tarde = 1): ";
-  std::cin >> sesion;
-  if (sesion < 0 || sesion > 1) {
-    std::cout << "La sesión seleccionada no es válida" << std::endl;
-    return; 
-  }
-
-  if (horario.get_estado(dia, aula, sesion) == "Libre") {
-    std::cout << "El aula seleccionada se encuentra libre" << std::endl;
-  } else if (horario.get_estado(dia, aula, sesion) == nombre) {
-    std::string libre = "Libre";
-    horario.set_estado(dia, aula, sesion, libre);
+  if (horario.buscar_reserva(nombre)) {
     std::string ruta_reserva = "../base_de_datos/usuarios/" + usuario.get_username() + "/" + "reserva_" + nombre +  ".txt";
     if (std::filesystem::exists(ruta_reserva)) {
       std::filesystem::remove(ruta_reserva);
     }
     std::cout << "La reserva se ha anulado" << std::endl;
+  } else {
+    std::cout << "No hay ninguna reserva con ese nombre" << std::endl;
   }
   std::cout << STYLE_ITALIC << BOLD << "HORARIO " << COLOR_RESET << std::endl;
   std::cout << horario << std::endl;
 }
+
 

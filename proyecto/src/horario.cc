@@ -34,7 +34,6 @@ Horario::Horario() {
  * @param estado 
  */
 void Horario::set_estado(int dia, int aula, int sesion, std::string estado) {
-  assert (dia >= 0 && dia < 7 && aula >= 1 && aula <= 4 && sesion >= 0 && sesion <= 1);
   horario_biblio_[dia][((aula - 1)* 2) + sesion] = estado;
 }
 
@@ -102,4 +101,17 @@ void Horario::guardar_horario() const {
       horario << std::endl;
     }
   }
+}
+
+bool Horario::buscar_reserva(const std::string& nombre) {
+  for (auto& dia : horario_biblio_) {
+    for (auto& sesion : dia) {
+      if (sesion == nombre) {
+        std::string libre = "Libre";
+        sesion = libre;
+        return true;
+      }
+    }
+  }
+  return false;
 }

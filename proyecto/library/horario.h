@@ -10,6 +10,7 @@ class Horario {
   void set_estado(int dia, int aula, int sesion, std::string estado); //setter
   std::string get_estado(int dia, int aula, int sesion) const; //getter
   void guardar_horario() const; //guardar_horario
+  bool buscar_reserva(const std::string& nombre); //buscar reserva
   friend std::ostream& operator<<(std::ostream& out, const Horario& horario); 
  private:
   std::vector<std::vector<std::string>> horario_biblio_;

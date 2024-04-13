@@ -18,6 +18,8 @@ int main() {
   std::cout << std::endl;
   // Información de la biblioteca
   get_informacion();
+  //VER HORARIO
+  ver_horarios();
   // Menú
   bool sesioniniciada = false;
   bool registradoaulaopt = false;
@@ -45,6 +47,5 @@ int main() {
   }
   //guardar horario, hacer siempre antes de que acabe el programa
   horario.guardar_horario();
-
   return 0;
 }
