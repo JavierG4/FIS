@@ -11,8 +11,8 @@ bool Libro::es_disponible() {
     return estado_ == 0;
 }
 
-void reservar_libro() {
-    if (estado_ == 0) { // Validación de disponibilidad
+void Libro::reservar_libro() {
+    if (es_disponible()) { // Validación de disponibilidad
         cout << "El libro está disponible." << endl;
 
         cout << "¿Desea reservar el libro? (s/n): ";

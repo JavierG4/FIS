@@ -2,6 +2,7 @@
 #include "usuario.h"
 #include "horario.h"
 #include "aulas.h"
+#include "libros.h"
 
 
 bool MostrarMenu(bool sesioniniciada) {
@@ -57,6 +58,11 @@ bool MenuRegistrado(bool registradoaulaopt) {
     std::cin >> opcion;
     switch(opcion) {
       case 1:
+        std::string nombre_libro;
+        std::cout << "Introduce el nombre del libro a reservar: " << std::endl;
+        std::cin >> nombre_libro;
+        Libro libro(nombre_libro);
+        libro.reservar_libro();
         break;
       case 2:
         registradoaulaopt = true;
