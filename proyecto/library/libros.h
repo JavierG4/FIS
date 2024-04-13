@@ -15,14 +15,13 @@ public:
     string get_autor();
     string get_fecha();
     void mostrar_informacion();
-
+    void cargar_info();
+    void guardar_info();
+    
 private:
     string nombre_libro_;
     string ruta_archivo_;
     bool estado_;
     string autor_;
     string fecha_;
-
-    void cargar_info();
-    void guardar_info();
 };
