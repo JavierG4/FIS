@@ -1,4 +1,5 @@
 #include "../library/libros.h" 
+using namespace std;
 
 Libro::Libro(string nombre_libro) {
     nombre_libro_ = nombre_libro;
@@ -10,14 +11,54 @@ bool Libro::es_disponible() {
     return estado_ == 0;
 }
 
-void Libro::reservar_libro() {
-    estado_ = 1;
-    guardar_info();
+void reservar_libro() {
+    if (estado_ == 0) { // Validación de disponibilidad
+        cout << "El libro está disponible." << endl;
+
+        cout << "¿Desea reservar el libro? (s/n): ";
+        char respuesta;
+        cin >> respuesta;
+
+        switch (respuesta) {
+            case 's':
+                estado_ = 1; // Reservar libro
+                guardar_info();
+                cout << "El libro ha sido reservado." << endl;
+                break;
+            case 'n':
+                cout << "La reserva del libro ha sido cancelada." << endl;
+                break;
+            default:
+                cout << "Opción no válida." << endl;
+        }
+    } else {
+        cout << "El libro está reservado o no existe." << endl;
+    }
 }
 
 void Libro::devolver_libro() {
-    estado_ = 0;
-    guardar_info();
+    if (estado_ == 1) { // Validación de estado
+        cout << "El libro está reservado." << endl;
+
+        cout << "¿Desea devolver el libro? (s/n): ";
+        char respuesta;
+        cin >> respuesta;
+
+        switch (respuesta) {
+            case 's':
+                estado_ = 0; // Devolver libro
+                guardar_info();
+                cout << "El libro ha sido devuelto." << endl;
+                break;
+            case 'n':
+                cout << "La devolución del libro ha sido cancelada." << endl;
+                break;
+            default:
+                cout << "Opción no válida." << endl;
+        }
+    } else {
+        cout << "El libro no está reservado o no existe." << endl;
+    }
 }
 
 string Libro::get_autor() {

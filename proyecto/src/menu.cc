@@ -12,12 +12,10 @@ bool MostrarMenu(bool sesioniniciada) {
     std::cout << "Elija la opción que desee realizar:\n"
               << "(1) Mostrar libros 📚\n"
               << "(2) Mostrar libros disponibles 📖\n"
-              << "(3) Reservar libro 📖\n"
-              << "(4) Devolver libro 📖\n"
-              << "(5) Mostrar horarios 📅\n"
-              << "(6) Iniciar sesión 👤\n"
-              << "(7) Ayuda ❓\n"
-              << "(8) Salir";
+              << "(3) Mostrar horarios 📅\n"
+              << "(4) Iniciar sesión 👤\n"
+              << "(5) Ayuda ❓\n"
+              << "(6) Salir";
     std::cout << std::endl;
     std::cin >> opcion;
     switch(opcion) {
