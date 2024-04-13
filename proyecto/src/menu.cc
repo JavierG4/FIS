@@ -10,11 +10,11 @@ bool MostrarMenu(bool sesioniniciada) {
   while (!salir && !sesioniniciada) {
     std::cout << std::endl << "¡Buenos días!" << std::endl << std::endl;
     std::cout << "Elija la opción que desee realizar:\n"
-              << "(1) Mostrar libros\n"
-              << "(2) Mostrar libros disponibles\n"
-              << "(3) Mostrar horarios\n"
-              << "(4) Iniciar sesión\n"
-              << "(5) Ayuda\n"
+              << "(1) Mostrar libros 📚\n"
+              << "(2) Mostrar libros disponibles 📖\n"
+              << "(3) Mostrar horarios 📅\n"
+              << "(4) Iniciar sesión 👤\n"
+              << "(5) Ayuda ❓\n"
               << "(6) Salir";
     std::cout << std::endl;
     std::cin >> opcion;
