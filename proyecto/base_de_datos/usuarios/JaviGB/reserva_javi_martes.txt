@@ -1,0 +1,4 @@
+Nombre de la reserva: javi_martes
+Aula: 1
+Día: martes
+Sesión: tarde

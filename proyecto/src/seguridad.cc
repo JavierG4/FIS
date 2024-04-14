@@ -101,11 +101,16 @@ bool Seguridad::MenuSeguridad(Usuario& user) {
   std::cout << "Buenos días! " << std::endl;
   bool resultado = false;
   int contador = 0;
-  int decision = 2;
-  while (decision != 1 && decision != 0 ) { 
+  int decision = -1;
+  do {
     std::cout << "Desea iniciar sesión o registrarse / 0 = (log in) / 1 = (sign in) " << std::endl;
     std::cin >> decision;
-  }
+    if (std::cin.fail()) {
+        std::cin.clear(); // limpia el estado de error
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // descarta la entrada incorrecta
+        decision = -1;
+    }
+  } while (decision != 0 && decision != 1);
   if ( decision == 0 ) { // log in
     while (resultado == false && contador < 3 ) { 
       std::string username;
