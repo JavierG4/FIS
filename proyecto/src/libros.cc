@@ -1,9 +1,10 @@
-#include "../library/libros.h" 
+#include "libros.h" 
+
 using namespace std;
 
 Libro::Libro(string nombre_libro) {
     nombre_libro_ = nombre_libro;
-    ruta_archivo_ = "../base_de_datos/repositorio_libros/" + nombre_libro + ".txt";
+    ruta_archivo_ = nombre_libro + ".txt";
     cargar_info();
 }
 
@@ -12,7 +13,7 @@ bool Libro::es_disponible() {
 }
 
 void Libro::reservar_libro() {
-    if (es_disponible()) { // Validación de disponibilidad
+    if (estado_ == 0) { // Validación de disponibilidad
         cout << "El libro está disponible." << endl;
 
         cout << "¿Desea reservar el libro? (s/n): ";
@@ -69,10 +70,13 @@ string Libro::get_fecha() {
     return fecha_;
 }
 
+string Libro::get_ruta_archivo() {
+    return ruta_archivo_;
+}
+
 void Libro::mostrar_informacion() {
     cout << "Nombre: " << nombre_libro_ << endl;
     cout << "Autor: " << autor_ << endl;
-    cout << "Fecha de publicación: " << fecha_ << endl;
     cout << "Disponibilidad: " << (estado_ ? "Reservado" : "Disponible") << endl;
 }
 
@@ -81,7 +85,7 @@ void Libro::cargar_info() {
     if (archivo.is_open()) {
         archivo >> estado_;
         getline(archivo, autor_);
-        getline(archivo, fecha_);
+        getline(archivo, autor_);
         archivo.close();
     } else {
         cout << "Error al abrir el archivo " << ruta_archivo_ << endl;
@@ -89,11 +93,14 @@ void Libro::cargar_info() {
 }
 
 void Libro::guardar_info() {
-    ofstream archivo(ruta_archivo_);
+    string linea_estado = to_string(estado_);
+    string linea_autor = autor_ + "\n" + fecha_;
+
+    // Abrir el archivo en modo truncamiento y escritura
+    ofstream archivo(ruta_archivo_, ios::trunc);
     if (archivo.is_open()) {
-        archivo << estado_ << endl;
-        archivo << autor_ << endl;
-        archivo << fecha_ << endl;
+        archivo << linea_estado;
+        archivo << linea_autor;
         archivo.close();
     } else {
         cout << "Error al abrir el archivo " << ruta_archivo_ << endl;

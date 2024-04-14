@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <vector>
 
 using namespace std;
 
@@ -14,6 +15,7 @@ public:
     void devolver_libro();
     string get_autor();
     string get_fecha();
+    string get_ruta_archivo();
     void mostrar_informacion();
     void cargar_info();
     void guardar_info();
