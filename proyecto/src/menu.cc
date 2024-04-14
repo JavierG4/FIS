@@ -2,7 +2,7 @@
 #include "usuario.h"
 #include "horario.h"
 #include "aulas.h"
-#include "libros.h"
+#include "../library/libros.h"
 
 
 bool MostrarMenu(bool sesioniniciada) {
@@ -59,8 +59,13 @@ bool MenuRegistrado(bool registradoaulaopt) {
 
     switch(opcion) {
       case 1: {
+        string libro_reserva;
+        cout << "Escribe el nombre del libro: ";
+        cin >> libro_reserva;
+        Libro reservado(libro_reserva);
+        reservado.reservar_libro();
         break;
-  }
+      }
         
       case 2:
         registradoaulaopt = true;
@@ -70,8 +75,14 @@ bool MenuRegistrado(bool registradoaulaopt) {
         registradoaulaopt = false; // Cancelar reserva
         return registradoaulaopt;
         break;
-      case 4:
+      case 4: { 
+        string libro_devolver;
+        cout << "Escribe el nombre del libro: ";
+        cin >> libro_devolver;
+        Libro devuelto(libro_devolver);
+        devuelto.devolver_libro();
         break;
+      }
       case 5:
         // Mostrar txt de foro
         break;

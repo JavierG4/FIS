@@ -1,10 +1,10 @@
-#include "libros.h" 
+#include "../library/libros.h"
 
 using namespace std;
 
 Libro::Libro(string nombre_libro) {
     nombre_libro_ = nombre_libro;
-    ruta_archivo_ = nombre_libro + ".txt";
+    ruta_archivo_ = "../base_de_datos/repositorio_libros/" + nombre_libro + ".txt";
     cargar_info();
 }
 
@@ -24,10 +24,10 @@ void Libro::reservar_libro() {
             case 's':
                 estado_ = 1; // Reservar libro
                 guardar_info();
-                cout << "El libro ha sido reservado." << endl;
+                cout << "El libro ha sido reservado. \n" << endl;
                 break;
             case 'n':
-                cout << "La reserva del libro ha sido cancelada." << endl;
+                cout << "La reserva del libro ha sido cancelada. \n" << endl;
                 break;
             default:
                 cout << "Opción no válida." << endl;
@@ -99,7 +99,7 @@ void Libro::guardar_info() {
     // Abrir el archivo en modo truncamiento y escritura
     ofstream archivo(ruta_archivo_, ios::trunc);
     if (archivo.is_open()) {
-        archivo << linea_estado;
+        archivo << linea_estado << endl;
         archivo << linea_autor;
         archivo.close();
     } else {
