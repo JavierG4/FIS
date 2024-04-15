@@ -113,7 +113,7 @@ void Libro::guardar_info() {
 
 void Libro::mostrar_todos_libros() {
     // 1. Get the directory path
-    string directorio_libros = "../base_de_datos_/repositorio_libros/";
+    string directorio_libros = "../base_de_datos/repositorio_libros/";
 
     // 2. Open the directory stream
     ifstream directorio(directorio_libros);
@@ -135,7 +135,7 @@ void Libro::mostrar_todos_libros() {
 
 void Libro::mostrar_libros_disponibles() {
     // 1. Get the directory path
-    string directorio_libros = "../base_de_datos_/repositorio_libros/";
+    string directorio_libros = "../base_de_datos/repositorio_libros/";
 
     // 2. Open the directory stream
     ifstream directorio(directorio_libros);
