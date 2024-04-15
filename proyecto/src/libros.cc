@@ -145,14 +145,23 @@ void Libro::mostrar_libros_disponibles() {
         // 4. Read each file name from the directory stream
         string nombre_archivo;
         while (directorio >> nombre_archivo) {
-            Libro archivo(nombre_archivo);
-            if (archivo.get_estado() == 0)
-            cout << nombre_archivo << endl;
+            // Create a Libro object using the file name
+            Libro libro(nombre_archivo);
+
+            // Load the information from the file
+            libro.cargar_info();
+
+            // Check if the book is available
+            if (libro.get_estado() == 0) {
+                // Display the book information
+                libro.mostrar_informacion();
+                cout << "------------------------------------" << endl;
+            }
         }
 
         // 5. Close the directory stream
         directorio.close();
-        } else {
+    } else {
         cout << "Error al abrir el directorio " << directorio_libros << endl;
     }
 }
