@@ -123,6 +123,28 @@ void Libro::mostrar_todos_libros() {
         // 4. Read each file name from the directory stream
         string nombre_archivo;
         while (directorio >> nombre_archivo) {
+            cout << nombre_archivo << endl;
+        }
+
+        // 5. Close the directory stream
+        directorio.close();
+        } else {
+        cout << "Error al abrir el directorio " << directorio_libros << endl;
+    }
+}
+
+void Libro::mostrar_libros_disponibles() {
+    // 1. Get the directory path
+    string directorio_libros = "../base_de_datos_/repositorio_libros";
+
+    // 2. Open the directory stream
+    ifstream directorio(directorio_libros);
+
+    // 3. Check if the directory was opened successfully
+    if (directorio.is_open()) {
+        // 4. Read each file name from the directory stream
+        string nombre_archivo;
+        while (directorio >> nombre_archivo) {
             Libro archivo(nombre_archivo);
             if (archivo.get_estado() == 0)
             cout << nombre_archivo << endl;
