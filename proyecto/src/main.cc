@@ -18,12 +18,11 @@ int main() {
   std::cout << std::endl;
   // Información de la biblioteca
   get_informacion();
-  //VER HORARIO
-  ver_horarios();
   // Menú
   bool sesioniniciada = false;
   bool registradoaulaopt = false;
   Horario horario;
+  std::cout << std::endl << "¡Buenos días!" << std::endl;
   if (MostrarMenu(sesioniniciada)) {
     // Seguridad
     Usuario user;

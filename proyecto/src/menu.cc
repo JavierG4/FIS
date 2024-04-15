@@ -3,14 +3,14 @@
 #include "horario.h"
 #include "aulas.h"
 #include "../library/libros.h"
+#include "info_biblio.h"
 
 
 bool MostrarMenu(bool sesioniniciada) {
   bool salir = false;
   int opcion {0};
   while (!salir && !sesioniniciada) {
-    std::cout << std::endl << "¡Buenos días!" << std::endl << std::endl;
-    std::cout << "Elija la opción que desee realizar:\n"
+    std::cout << "\nElija la opción que desee realizar:\n"
               << "(1) Mostrar libros 📚\n"
               << "(2) Mostrar libros disponibles 📖\n"
               << "(3) Mostrar horarios 📅\n"
@@ -25,6 +25,8 @@ bool MostrarMenu(bool sesioniniciada) {
       case 2:
         break;
       case 3:
+        std::cout << std::endl;
+        ver_horarios();
         break;
       case 4:
         sesioniniciada = true;
