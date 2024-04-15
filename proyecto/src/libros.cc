@@ -12,6 +12,10 @@ bool Libro::es_disponible() {
     return estado_ == 0;
 }
 
+int Libro::get_estado() {
+    return estado_;
+}
+
 void Libro::reservar_libro() {
     if (estado_ == 0) { // Validación de disponibilidad
         cout << "El libro está disponible." << endl;
@@ -119,6 +123,8 @@ void Libro::mostrar_todos_libros() {
         // 4. Read each file name from the directory stream
         string nombre_archivo;
         while (directorio >> nombre_archivo) {
+            Libro archivo(nombre_archivo);
+            if (archivo.get_estado() == 0)
             cout << nombre_archivo << endl;
         }
 
