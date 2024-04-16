@@ -4,6 +4,8 @@
 #include "aulas.h"
 #include "libros.h"
 #include "info_biblio.h"
+#include "discusion.h"
+#include "foro.h"
 
 
 bool MostrarMenu(bool sesioniniciada) {
@@ -89,7 +91,7 @@ bool MenuRegistrado(bool registradoaulaopt) {
         break;
       }
       case 5:
-        // Mostrar txt de foro
+        MenuForo();
         break;
       case 6:
         salir = true;
