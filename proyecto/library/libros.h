@@ -19,6 +19,9 @@ public:
     void mostrar_informacion();
     void cargar_info();
     void guardar_info();
+    void mostrar_todos_libros();
+    void mostrar_libros_disponibles();
+    int get_estado();
     
 private:
     string nombre_libro_;
