@@ -21,10 +21,11 @@ bool MostrarMenu(bool sesioniniciada) {
     std::cin >> opcion;
     switch(opcion) {
       case 1: 
-        mostrar_todos_libros();
+        //Libro libros;
+        //libro.mostrar_todos_libros();
         break;
       case 2:
-        mostrar_libros_disponibles();
+        //mostrar_libros_disponibles();
         break;
       case 3:
         std::cout << std::endl;
