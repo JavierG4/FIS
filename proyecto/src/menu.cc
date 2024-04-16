@@ -2,7 +2,7 @@
 #include "usuario.h"
 #include "horario.h"
 #include "aulas.h"
-#include "../library/libros.h"
+#include "libros.h"
 #include "info_biblio.h"
 
 
@@ -21,10 +21,10 @@ bool MostrarMenu(bool sesioniniciada) {
     std::cin >> opcion;
     switch(opcion) {
       case 1: 
-        Libro::mostrar_todos_libros();
+        mostrar_todos_libros();
         break;
       case 2:
-        Libro::mostrar_libros_disponibles();
+        mostrar_libros_disponibles();
         break;
       case 3:
         std::cout << std::endl;
