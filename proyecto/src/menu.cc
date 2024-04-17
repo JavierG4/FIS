@@ -24,10 +24,10 @@ bool MostrarMenu(bool sesioniniciada) {
     switch(opcion) {
       case 1: 
         //Libro libros;
-        //libro.mostrar_todos_libros();
+        mostrar_todos_libros();
         break;
       case 2:
-        //mostrar_libros_disponibles();
+        mostrar_libros_disponibles();
         break;
       case 3:
         std::cout << std::endl;

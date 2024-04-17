@@ -74,6 +74,10 @@ string Libro::get_fecha() {
     return fecha_;
 }
 
+string Libro::get_nombre() {
+    return nombre_libro_;
+}
+
 string Libro::get_ruta_archivo() {
     return ruta_archivo_;
 }
@@ -111,57 +115,58 @@ void Libro::guardar_info() {
     }
 }
 
-void Libro::mostrar_todos_libros() {
+void mostrar_todos_libros() {
     // 1. Get the directory path
     string directorio_libros = "../base_de_datos/repositorio_libros";
 
-    // 2. Open the directory stream
-    ifstream directorio(directorio_libros);
+    // 2. Iterate through files in the directory
+    for (const auto& entry : std::filesystem::directory_iterator(directorio_libros)) {
+        // Check if the entry is a regular file
+        if (entry.is_regular_file()) {
+            // Get the file name
+            string nombre_archivo = entry.path().filename().string();
 
-    // 3. Check if the directory was opened successfully
-    if (directorio.is_open()) {
-        // 4. Read each file name from the directory stream
-        string nombre_archivo;
-        while (directorio >> nombre_archivo) {
+            // Process the file name (e.g., print it)
             cout << nombre_archivo << endl;
         }
-
-        // 5. Close the directory stream
-        directorio.close();
-        } else {
-        cout << "Error al abrir el directorio " << directorio_libros << endl;
     }
 }
 
-void Libro::mostrar_libros_disponibles() {
+void mostrar_libros_disponibles() {
     // 1. Get the directory path
     string directorio_libros = "../base_de_datos/repositorio_libros";
 
-    // 2. Open the directory stream
-    ifstream directorio(directorio_libros);
+    // 2. Iterate through files in the directory
+    for (const auto& entry : std::filesystem::directory_iterator(directorio_libros)) {
+        // Check if the entry is a regular file
+        if (entry.is_regular_file()) {
+            // Construct the full file path
+            string file_path = entry.path().string();
 
-    // 3. Check if the directory was opened successfully
-    if (directorio.is_open()) {
-        // 4. Read each file name from the directory stream
-        string nombre_archivo;
-        while (directorio >> nombre_archivo) {
-            // Create a Libro object using the file name
-            Libro libro(nombre_archivo);
+            // Open the file for reading
+            ifstream archivo(file_path);
 
-            // Load the information from the file
-            libro.cargar_info();
+            // Check if the file opened successfully
+            if (archivo.is_open()) {
+                int estado;
 
-            // Check if the book is available
-            if (libro.get_estado() == 0) {
-                // Display the book information
-                libro.mostrar_informacion();
-                cout << "------------------------------------" << endl;
+                // Read the status from the first line of the file
+                archivo >> estado;
+
+                // Close the file
+                archivo.close();
+
+                // Check if the book is available (status 0)
+                if (estado == 0) {
+                    // Extract the file name (optional)
+                    string nombre_archivo = entry.path().filename().string();
+
+                    // Process the available book (e.g., print its name)
+                    cout << nombre_archivo << endl;
+                }
+            } else {
+                cerr << "Error al abrir el archivo " << file_path << endl;
             }
         }
-
-        // 5. Close the directory stream
-        directorio.close();
-    } else {
-        cout << "Error al abrir el directorio " << directorio_libros << endl;
     }
 }
