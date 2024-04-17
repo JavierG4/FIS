@@ -14,33 +14,28 @@ bool MostrarMenu(bool sesioniniciada) {
   while (!salir && !sesioniniciada) {
     std::cout << "\nElija la opción que desee realizar:\n"
               << "(1) Mostrar libros 📚\n"
-              << "(2) Mostrar libros disponibles 📖\n"
-              << "(3) Mostrar horarios 📅\n"
-              << "(4) Iniciar sesión 👤\n"
-              << "(5) Ayuda ❓\n"
-              << "(6) Salir";
+              << "(2) Mostrar horarios 📅\n"
+              << "(3) Iniciar sesión 👤\n"
+              << "(4) Ayuda ❓\n"
+              << "(5) Salir";
     std::cout << std::endl;
     std::cin >> opcion;
     switch(opcion) {
       case 1: 
-        //Libro libros;
         mostrar_todos_libros();
         break;
       case 2:
-        mostrar_libros_disponibles();
-        break;
-      case 3:
         std::cout << std::endl;
         ver_horarios();
         break;
-      case 4:
+      case 3:
         sesioniniciada = true;
         return sesioniniciada;
         break;
-      case 5:
-        // Mostrar txt de Ayuda
+      case 4:
+        // Ayuda
         break;
-      case 6:
+      case 5:
         salir = true;
         break;
       default: 
@@ -54,18 +49,22 @@ bool MenuRegistrado(bool registradoaulaopt) {
   bool salir = false;
   int opcion {0};
   while (!salir) {
-    std::cout << "Elija la opción que desee realizar:\n"
-              << "(1) Reservar libros 📝📕\n"
-              << "(2) Reservar aulas 📝🪑\n"
-              << "(3) Anular reserva de aula 🪑\n"
-              << "(4) Devolver libro 📕\n"
-              << "(5) Ver foro 🗣️\n"
-              << "(6) Salir";
+    std::cout << "\nElija la opción que desee realizar:\n"
+              << "(1) Mostrar libros disponibles 📖\n"
+              << "(2) Reservar libros 📝📕\n"
+              << "(3) Reservar aulas 📝🪑\n"
+              << "(4) Anular reserva de aula 🪑\n"
+              << "(5) Devolver libro 📕\n"
+              << "(6) Ver foro 🗣️\n"
+              << "(7) Salir";
     std::cout << std::endl;
     std::cin >> opcion;
 
     switch(opcion) {
-      case 1: {
+      case 1: 
+        mostrar_libros_disponibles();
+        break;
+      case 2: {
         string libro_reserva;
         cout << "Escribe el nombre del libro: ";
         cin >> libro_reserva;
@@ -73,16 +72,15 @@ bool MenuRegistrado(bool registradoaulaopt) {
         reservado.reservar_libro();
         break;
       }
-        
-      case 2:
-        registradoaulaopt = true;
-        return registradoaulaopt;
-        break;
       case 3:
-        registradoaulaopt = false; // Cancelar reserva
+        registradoaulaopt = true; // Reservar aula
         return registradoaulaopt;
         break;
-      case 4: { 
+      case 4:
+        registradoaulaopt = false; // Anular reserva aula
+        return registradoaulaopt;
+        break;
+      case 5: { 
         string libro_devolver;
         cout << "Escribe el nombre del libro: ";
         cin >> libro_devolver;
@@ -90,10 +88,10 @@ bool MenuRegistrado(bool registradoaulaopt) {
         devuelto.devolver_libro();
         break;
       }
-      case 5:
+      case 6:
         MenuForo();
         break;
-      case 6:
+      case 7:
         salir = true;
         break;
       default: 
