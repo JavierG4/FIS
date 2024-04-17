@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <filesystem>
 
 using namespace std;
 
@@ -15,12 +16,12 @@ public:
     void devolver_libro();
     string get_autor();
     string get_fecha();
+    string get_nombre();
     string get_ruta_archivo();
     void mostrar_informacion();
     void cargar_info();
     void guardar_info();
-    void mostrar_todos_libros();
-    void mostrar_libros_disponibles();
+
     int get_estado();
     
 private:
@@ -29,4 +30,8 @@ private:
     bool estado_;
     string autor_;
     string fecha_;
+
 };
+
+void mostrar_todos_libros();
+void mostrar_libros_disponibles();
