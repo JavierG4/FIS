@@ -104,7 +104,6 @@ void Libro::guardar_info() {
     string linea_estado = to_string(estado_);
     string linea_autor = autor_ + "\n" + fecha_;
 
-    // Abrir el archivo en modo truncamiento y escritura
     ofstream archivo(ruta_archivo_, ios::trunc);
     if (archivo.is_open()) {
         archivo << linea_estado << endl;
@@ -116,52 +115,32 @@ void Libro::guardar_info() {
 }
 
 void mostrar_todos_libros() {
-    // 1. Get the directory path
     string directorio_libros = "../base_de_datos/repositorio_libros";
 
-    // 2. Iterate through files in the directory
     for (const auto& entry : std::filesystem::directory_iterator(directorio_libros)) {
-        // Check if the entry is a regular file
         if (entry.is_regular_file()) {
-            // Get the file name
             string nombre_archivo = entry.path().filename().string();
-
-            // Process the file name (e.g., print it)
             cout << nombre_archivo << endl;
         }
     }
 }
 
 void mostrar_libros_disponibles() {
-    // 1. Get the directory path
     string directorio_libros = "../base_de_datos/repositorio_libros";
 
-    // 2. Iterate through files in the directory
     for (const auto& entry : std::filesystem::directory_iterator(directorio_libros)) {
-        // Check if the entry is a regular file
         if (entry.is_regular_file()) {
-            // Construct the full file path
             string file_path = entry.path().string();
-
-            // Open the file for reading
             ifstream archivo(file_path);
 
-            // Check if the file opened successfully
             if (archivo.is_open()) {
                 int estado;
-
-                // Read the status from the first line of the file
                 archivo >> estado;
 
-                // Close the file
                 archivo.close();
 
-                // Check if the book is available (status 0)
                 if (estado == 0) {
-                    // Extract the file name (optional)
                     string nombre_archivo = entry.path().filename().string();
-
-                    // Process the available book (e.g., print its name)
                     cout << nombre_archivo << endl;
                 }
             } else {
