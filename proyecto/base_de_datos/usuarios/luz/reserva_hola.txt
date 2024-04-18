@@ -1,0 +1,4 @@
+Nombre de la reserva: hola
+Aula: 3
+Día: martes
+Sesión: mañana
