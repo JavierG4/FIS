@@ -20,7 +20,6 @@ int main() {
   get_informacion();
   // Menú
   bool sesioniniciada = false;
-  bool registradoaulaopt = false;
   Horario horario;
   std::cout << std::endl << "¡Buenos días!" << std::endl;
   if (MostrarMenu(sesioniniciada)) {
@@ -33,15 +32,7 @@ int main() {
     } else {
       // Usuario
       std::cout << "Bienvenido " << user.get_username() << std::endl;
-      //std::cout << user << std::endl; 
-      // Reservar aulas
-      if (MenuRegistrado(registradoaulaopt, user) == true) {
-        reservar_aula(horario, user);
-        // Mostrar horario
-        std::cout << horario << std::endl;
-      } else {
-        anular_reserva_aula(horario, user);
-      }
+      MenuRegistrado(user, horario);
     }
   }
   //guardar horario, hacer siempre antes de que acabe el programa
