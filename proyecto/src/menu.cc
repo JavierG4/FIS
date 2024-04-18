@@ -14,23 +14,29 @@ bool MostrarMenu(bool sesioniniciada) {
     std::cin >> opcion;
     switch(opcion) {
       case 0:
+        system("clear");
         salir = true;
         break;
       case 1: 
+        system("clear");
         mostrar_todos_libros();
         break;
       case 2:
+        system("clear");
         std::cout << std::endl;
         ver_horarios();
         break;
       case 3:
+        system("clear");
         sesioniniciada = true;
         return sesioniniciada;
         break;
       case 4:
+        system("clear");
         // Ayuda
         break;
       default: 
+        system("clear");
         std::cout << "Ha introducido una opción no válida" << std::endl;
     }
   }
@@ -55,12 +61,15 @@ void MenuRegistrado(Usuario& user, Horario horario) {
 
     switch(opcion) {
       case 0:
+        system("clear");
         salir = true;
         break;
       case 1: 
+        system("clear");
         mostrar_libros_disponibles();
         break;
       case 2: {
+        system("clear");
         string libro_reserva;
         cout << "Escribe el nombre del libro: ";
         cin >> libro_reserva;
@@ -69,15 +78,19 @@ void MenuRegistrado(Usuario& user, Horario horario) {
         break;
       }
       case 3:
+        system("clear");
         std::cout << horario << std::endl;
         break;
       case 4:
+        system("clear");
         reservar_aula(horario, user);
         break;
       case 5:
+        system("clear");
         anular_reserva_aula(horario, user);
         break;
       case 6: { 
+        system("clear");
         string libro_devolver;
         cout << "Escribe el nombre del libro: ";
         cin >> libro_devolver;
@@ -86,9 +99,11 @@ void MenuRegistrado(Usuario& user, Horario horario) {
         break;
       }
       case 7:
+        system("clear");
         MenuForo(user);
         break;
       default: 
+        system("clear");
         std::cout << "Ha introducido una opción no válida" << std::endl;
     }
   }

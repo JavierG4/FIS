@@ -31,7 +31,8 @@ int main() {
       std::cout << "Error de inicio" << std::endl;
     } else {
       // Usuario
-      std::cout << "Bienvenido " << user.get_username() << std::endl;
+      system("clear");
+      std::cout << "Bienvenido/a " << user.get_username() << std::endl;
       MenuRegistrado(user, horario);
     }
   }
