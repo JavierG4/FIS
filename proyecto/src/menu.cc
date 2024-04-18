@@ -45,7 +45,7 @@ bool MostrarMenu(bool sesioniniciada) {
   return sesioniniciada;
 }
 
-bool MenuRegistrado(bool registradoaulaopt) {
+bool MenuRegistrado(bool registradoaulaopt, Usuario& usuario) {
   bool salir = false;
   int opcion {0};
   while (!salir) {
@@ -89,7 +89,7 @@ bool MenuRegistrado(bool registradoaulaopt) {
         break;
       }
       case 6:
-        MenuForo();
+        MenuForo(usuario);
         break;
       case 7:
         salir = true;

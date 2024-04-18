@@ -13,11 +13,13 @@ void Discusion::Leer() {
   }
 }
 
-void Discusion::Escribir() {
+void Discusion::Escribir(Usuario& usuario) {
   Leer();
   std::ofstream file(ruta_, std::ios::app);
   std::string line;
-  std::cout << "Escribe tu mensaje: ";
+  std::cout << "Escribe tu mensaje: " << std::endl;
+  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Limpia el buffer de std::cin
   std::getline(std::cin, line);
+  file << usuario.get_username() << ": " << std::endl;
   file << line << std::endl;
 }

@@ -33,9 +33,9 @@ int main() {
     } else {
       // Usuario
       std::cout << "Bienvenido " << user.get_username() << std::endl;
-      std::cout << user << std::endl; 
+      //std::cout << user << std::endl; 
       // Reservar aulas
-      if (MenuRegistrado(registradoaulaopt) == true) {
+      if (MenuRegistrado(registradoaulaopt, user) == true) {
         reservar_aula(horario, user);
         // Mostrar horario
         std::cout << horario << std::endl;
