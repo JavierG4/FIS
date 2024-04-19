@@ -100,7 +100,7 @@ void MenuRegistrado(Usuario& user, Horario horario) {
       }
       case 7:
         system("clear");
-        MenuForo(user);
+        //MenuForo(user);
         break;
       default: 
         system("clear");
