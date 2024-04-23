@@ -11,6 +11,7 @@ public:
 
   void cargar_catalogo();
   void mostrar_catalogo();
+  void listar_archivos();
 
 private:
   std::vector<Libro> catalogo_;
