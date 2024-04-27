@@ -13,8 +13,9 @@
 #include "horario.h"
 #include "aulas.h"
 #include "info_biblio.h"
-
-int main() {
+#include "eventos.h" //eventos: nuevo
+#include "ver_eventos.h" //ver eventos: nuevo
+/*int main() {
   std::cout << std::endl;
   // Información de la biblioteca
   get_informacion();
@@ -38,5 +39,19 @@ int main() {
   }
   //guardar horario, hacer siempre antes de que acabe el programa
   horario.guardar_horario();
+  return 0;
+}*/
+
+int main() {
+  Eventos nuevo_evento;
+  Usuario user;
+  nuevo_evento.mostrar();
+  if (nuevo_evento.apuntarse(user)) {
+    std::cout << "Te has apuntado al evento" << std::endl;
+  } else {
+    std::cout << "No se ha podido apuntar al evento" << std::endl;
+  }
+  ver_eventos(user);
+  nuevo_evento.guardar_eventos();
   return 0;
 }
