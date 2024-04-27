@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #include <filesystem>
+#include <ctime>
 
 #define STYLE_ITALIC  "\033[3m"
 #define COLOR_RESET   "\033[0m"
@@ -101,10 +102,10 @@ void anular_reserva_aula(Horario& horario,Usuario& usuario) {
 void ver_reservas_aulas(Usuario& usuario) {
   std::cout << STYLE_ITALIC << BOLD << "RESERVAS" << COLOR_RESET << std::endl;
   std::string ruta_reserva = "../base_de_datos/usuarios/" + usuario.get_username();
-  for (const auto& entry : std::filesystem::directory_iterator(ruta_reserva)) {
-    auto filename = entry.path().filename().string();
+  for (const auto& entrada_del_dir : std::filesystem::directory_iterator(ruta_reserva)) {
+    auto filename = entrada_del_dir.path().filename().string();
     if (filename.find("reserva") == 0)  {
-      std::ifstream file(entry.path());
+      std::ifstream file(entrada_del_dir.path());
       if (file) { 
         std::string line;
         while (getline(file, line)) {
@@ -114,6 +115,36 @@ void ver_reservas_aulas(Usuario& usuario) {
         std::cerr << "Error al abrir el archivo " << filename << std::endl;
       }
       file.close();
+    }
+  }
+}
+
+void imprimir_recordatorio(Usuario& usuario) {
+  std::string ruta_reserva = "../base_de_datos/usuarios/" + usuario.get_username();
+  const std::string dias[7] = {" domingo", " lunes", " martes", " miercoles", " jueves", " viernes", " sabado"};
+  
+  std::time_t time = std::time(nullptr);
+  std::tm* now = std::localtime(&time);
+  int dia_siguiente = (now->tm_wday + 1) % 7;
+  
+  for (const auto& entrada_del_dir : std::filesystem::directory_iterator(ruta_reserva)) {
+    auto filename = entrada_del_dir.path().filename().string();
+    if (filename.find("reserva") == 0)  {
+      std::ifstream file(entrada_del_dir.path());
+      if (file) {
+        std::string line;
+        while (getline(file, line)) {
+          if (line.rfind("Día:", 0) == 0) {
+            std::string dia_de_la_reserva = line.substr(5); 
+            for (int i = 0; i < 7; i++) {
+              if (dias[i] == dia_de_la_reserva && i == dia_siguiente) {
+                std::cout << STYLE_ITALIC << BOLD << "Recordatorio: " << COLOR_RESET << "Tienes una reserva mañana de un aula. Para más información consulte: ver reservas" <<  std::endl;
+                break;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

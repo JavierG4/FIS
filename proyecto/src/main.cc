@@ -52,6 +52,7 @@ int main() {
     std::cout << "No se ha podido apuntar al evento" << std::endl;
   }
   ver_eventos(user);
-  nuevo_evento.guardar_eventos();
+  nuevo_evento.guardar_eventos(); //hacer siempre 
+  imprimir_recordatorio(user); //imprime el recordatorio de las aulas, colocar al principio de las opciones
   return 0;
 }
