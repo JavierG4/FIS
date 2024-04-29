@@ -3,13 +3,15 @@
 bool MostrarMenu(bool sesioniniciada) {
   bool salir = false;
   int opcion;
+  Eventos nuevo_evento;
   while (!salir && !sesioniniciada) {
     std::cout << "\nElija la opción que desee realizar:\n"
               << "(0) Salir\n"
               << "(1) Mostrar libros 📚\n"
-              << "(2) Mostrar horarios 📅\n"
-              << "(3) Iniciar sesión 👤\n"
-              << "(4) Ayuda ❓";
+              << "(2) Ver eventos\n"
+              << "(3) Mostrar horarios 📅\n"
+              << "(4) Iniciar sesión 👤\n"
+              << "(5) Ayuda ❓";
     std::cout << std::endl;
     std::cin >> opcion;
     switch(opcion) {
@@ -23,15 +25,19 @@ bool MostrarMenu(bool sesioniniciada) {
         break;
       case 2:
         system("clear");
+        nuevo_evento.mostrar();
+        break;
+      case 3:
+        system("clear");
         std::cout << std::endl;
         ver_horarios();
         break;
-      case 3:
+      case 4:
         system("clear");
         sesioniniciada = true;
         return sesioniniciada;
         break;
-      case 4:
+      case 5:
         system("clear");
         // Ayuda
         break;
@@ -43,19 +49,22 @@ bool MostrarMenu(bool sesioniniciada) {
   return sesioniniciada;
 }
 
-void MenuRegistrado(Usuario& user, Horario horario) {
+void MenuRegistrado(Usuario& user, Horario horario, Eventos nuevo_evento) {
   bool salir = false;
   int opcion {0};
+  bool apuntar;
   while (!salir) {
     std::cout << "\nElija la opción que desee realizar:\n"
               << "(0) Salir\n"
               << "(1) Mostrar libros disponibles 📖\n"
               << "(2) Reservar libros 📝📕\n"
-              << "(3) Mostrar horario aulas\n"
-              << "(4) Reservar aulas 📝🪑\n"
-              << "(5) Anular reserva de aula 🪑\n"
-              << "(6) Devolver libro 📕\n"
-              << "(7) Ver foro 🗣️";
+              << "(3) Apuntarse a un evento\n"
+              << "(4) Mostrar horario aulas\n"
+              << "(5) Reservar aulas 📝🪑\n"
+              << "(6) Ver aulas reservadas\n"
+              << "(7) Anular reserva de aula 🪑\n"
+              << "(8) Devolver libro 📕\n"
+              << "(9) Ver foro 🗣️";
     std::cout << std::endl;
     std::cin >> opcion;
 
@@ -77,19 +86,35 @@ void MenuRegistrado(Usuario& user, Horario horario) {
         reservado.reservar_libro();
         break;
       }
-      case 3:
+      case 3: {
+        system("clear");
+        nuevo_evento.mostrar();  
+        if (nuevo_evento.apuntarse(user)) {
+          std::cout << "Te has apuntado al evento" << std::endl;
+        } else {
+          std::cout << "No se ha podido apuntar al evento" << std::endl;
+        }
+        ver_eventos(user);
+        // nuevo_evento.guardar_eventos();
+        break;
+      }
+      case 4:
         system("clear");
         std::cout << horario << std::endl;
         break;
-      case 4:
+      case 5:
         system("clear");
         reservar_aula(horario, user);
         break;
-      case 5:
+      case 6:
+        system("clear");
+        ver_reservas_aulas(user);
+        break;
+      case 7:
         system("clear");
         anular_reserva_aula(horario, user);
         break;
-      case 6: { 
+      case 8: { 
         system("clear");
         string libro_devolver;
         cout << "Escribe el nombre del libro: ";
@@ -98,7 +123,7 @@ void MenuRegistrado(Usuario& user, Horario horario) {
         devuelto.devolver_libro();
         break;
       }
-      case 7:
+      case 9:
         system("clear");
         //MenuForo(user);
         break;
