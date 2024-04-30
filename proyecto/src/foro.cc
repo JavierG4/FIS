@@ -1,20 +1,21 @@
 #include "../library/foro.h"
 
-void MenuForo() {
+void MenuForo(Usuario& user) {
   Foro foro;
   int option = 5;
   while (option != 0) {
-    std::cout << "1. Mostrar discusiones" << std::endl;
-    std::cout << "2. Seleccionar discusión" << std::endl;
-    std::cout << "3. Crear discusión" << std::endl;
-    std::cout << "0. Salir" << std::endl;
+    std::cout << "Foro\n";
+    std::cout << "(1) Mostrar discusiones" << std::endl;
+    std::cout << "(2) Seleccionar discusión" << std::endl;
+    std::cout << "(3) Crear discusión" << std::endl;
+    std::cout << "(0) Salir" << std::endl;
     std::cin >> option;
     switch (option) {
       case 1:
         foro.MostrarDiscusiones();
         break;
       case 2:
-        foro.SeleccionarDiscusion();
+        foro.SeleccionarDiscusion(user);
         break;
       case 3:
         foro.CrearDiscusion();
@@ -33,33 +34,36 @@ Foro::Foro() {
   std::string ruta = "../base_de_datos/foro";
   for (const auto & entry : std::filesystem::directory_iterator(ruta)) {
     std::string file = entry.path();
+    std::string tema = file.substr(file.find_last_of("/") + 1); // Obtiene el nombre del archivo
+    tema = tema.substr(0, tema.find(".")); // Elimina la extensión del archivo
+    discusiones_.push_back(Discusion(tema, file));
   }
 }
 
 void Foro::MostrarDiscusiones() {
   for (int i = 0; i < discusiones_.size(); i++) {
-    std::cout << i << ". " << discusiones_[i].GetTema() << std::endl;
+    std::cout << "Discusión " << i << " " << discusiones_[i].GetTema() << std::endl;
   }
 }
 
-void Foro::SeleccionarDiscusion() {
+void Foro::SeleccionarDiscusion(Usuario& usuario) {
   MostrarDiscusiones();
-  std::cout << "Selecciona una discusión: ";
+  std::cout << "Selecciona el numero de una discusión: ";
   int index;
   std::cin >> index;
   std::cout << "Discusión seleccionada: " << discusiones_[index].GetTema() << std::endl;
   int option = 5;
   while (option != 0) {
-    std::cout << "1. Leer discusión" << std::endl;
-    std::cout << "2. Escribir mensaje" << std::endl;
-    std::cout << "0. Salir" << std::endl;
+    std::cout << "(1) Leer discusión" << std::endl;
+    std::cout << "(2) Escribir mensaje" << std::endl;
+    std::cout << "(0) Salir" << std::endl;
     std::cin >> option;
     switch (option) {
       case 1:
         discusiones_[index].Leer();
         break;
       case 2:
-        discusiones_[index].Escribir();
+        discusiones_[index].Escribir(usuario);
         break;
       case 0:
         return;

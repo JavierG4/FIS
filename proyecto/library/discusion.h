@@ -2,12 +2,13 @@
 #include <iostream>
 #include <filesystem>
 #include <fstream>
+#include "../library/usuario.h"
 
-class Discusion{
+class Discusion {
  public:
    Discusion(std::string, std::string);
    void Leer();
-   void Escribir();
+   void Escribir(Usuario& usuario);
    std::string GetTema() { return tema_; }
    std::string GetRuta() { return ruta_; }
 

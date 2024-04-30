@@ -125,7 +125,7 @@ void MenuRegistrado(Usuario& user, Horario horario, Eventos nuevo_evento) {
       }
       case 9:
         system("clear");
-        //MenuForo(user);
+        MenuForo(user);
         break;
       default: 
         system("clear");

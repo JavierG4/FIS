@@ -5,15 +5,16 @@
 #include "../library/discusion.h"
 #include <vector>
 #include <fstream>
-
-void MenuForo();
+#include "../library/usuario.h"
 
 class Foro {
  public:
    Foro();
    void MostrarDiscusiones();
    void CrearDiscusion();
-   void SeleccionarDiscusion();
+   void SeleccionarDiscusion(Usuario& usuario);
  private:
    std::vector<Discusion> discusiones_;
 };
+
+void MenuForo(Usuario& user);

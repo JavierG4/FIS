@@ -6,8 +6,9 @@
 #include "info_biblio.h"
 #include "ver_eventos.h"
 #include "eventos.h"
-//#include "discusion.h"
-//#include "foro.h"
+#include "discusion.h"
+#include "foro.h"
 
+void MenuForo(Usuario&);
 bool MostrarMenu(bool);
 void MenuRegistrado(Usuario&, Horario, Eventos);

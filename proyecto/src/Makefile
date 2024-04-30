@@ -22,4 +22,4 @@ actu:
 	git commit -m actualización
 	git push
 program:
-	g++ -std=c++17 -g -I../library -o Biblioteca estanteria.cc libros.cc usuario.cc main.cc seguridad.cc horario.cc aulas.cc info_biblio.cc ver_eventos.cc eventos.cc menu.cc 
+	g++ -std=c++17 -g -I../library -o Biblioteca estanteria.cc libros.cc usuario.cc main.cc seguridad.cc horario.cc aulas.cc info_biblio.cc ver_eventos.cc eventos.cc menu.cc foro.cc discusion.cc
