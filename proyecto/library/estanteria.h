@@ -1,19 +1,17 @@
-#include <iostream>
-#include <fstream>
 #include <vector>
 #include <string>
-#include "libros.h"
+#include <iostream>
+#include <filesystem>
 
 class Estanteria {
-public:
-  Estanteria();
-  ~Estanteria();
-
-  void cargar_catalogo();
-  void mostrar_catalogo();
-  void listar_archivos();
-
 private:
-  std::vector<Libro> catalogo_;
-  std::string ruta_archivo_libro_;
+  // Vector para almacenar los nombres de archivo
+  std::vector<std::string> nombres_archivos_;
+
+public:
+  // Constructor por defecto
+  Estanteria() = default;
+  
+  void generarCatalogo(const std::string& path);
+  void imprimirCatalogo();
 };
