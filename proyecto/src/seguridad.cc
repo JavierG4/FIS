@@ -30,9 +30,10 @@ bool Seguridad::Sign_in(std::string username, std::string password, Usuario& use
   std::ifstream file("../base_de_datos/seguridad/user.txt");
   std::string line;
   while (getline(file,line)) {
-    std::ifstream(line);
+    std::istringstream iss(line);
     std::string username1;
-    line >> username1;
+    iss >> username1;
+    std::cout << username1 << " " << username << std::endl;
     if (username1 == username) {
       std::cout << "Ya existe ese usuario o alguien con ese username " << std::endl;
       return false;
