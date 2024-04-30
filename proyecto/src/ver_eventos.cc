@@ -9,7 +9,7 @@
 #define BOLD     "\033[1m" 
 
 void ver_eventos(Usuario& usuario) {
-  std::cout << STYLE_ITALIC << BOLD << "EVENTOS" << COLOR_RESET << std::endl;
+  std::cout << STYLE_ITALIC << BOLD << "\nEVENTOS" << COLOR_RESET << std::endl;
   std::string ruta_evento = "../base_de_datos/usuarios/" + usuario.get_username();
   for (const auto& entry : std::filesystem::directory_iterator(ruta_evento)) {
     auto filename = entry.path().filename().string();

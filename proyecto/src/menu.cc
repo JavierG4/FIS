@@ -1,10 +1,10 @@
 #include "menu.h"
 
-bool MostrarMenu(bool sesioniniciada) {
+void MostrarMenu(Horario horario) {
   bool salir = false;
   int opcion;
   Eventos nuevo_evento;
-  while (!salir && !sesioniniciada) {
+  while (!salir) {
     std::cout << "\nElija la opción que desee realizar:\n"
               << "(0) Salir\n"
               << "(1) Mostrar libros 📚\n"
@@ -32,11 +32,22 @@ bool MostrarMenu(bool sesioniniciada) {
         std::cout << std::endl;
         ver_horarios();
         break;
-      case 4:
+      case 4: {
         system("clear");
-        sesioniniciada = true;
-        return sesioniniciada;
+        Usuario user;
+        Seguridad seguridad;
+        bool resultado = seguridad.MenuSeguridad(user);
+        if (!resultado) {
+          std::cout << "Error de inicio" << std::endl;
+        } else {
+          // Usuario
+          system("clear");
+          std::cout << "Bienvenido/a " << user.get_username() << std::endl;
+          imprimir_recordatorio(user);
+          MenuRegistrado(user, horario, nuevo_evento);
+        }
         break;
+      }
       case 5:
         system("clear");
         // Ayuda
@@ -46,14 +57,11 @@ bool MostrarMenu(bool sesioniniciada) {
         std::cout << "Ha introducido una opción no válida" << std::endl;
     }
   }
-  return sesioniniciada;
 }
 
 void MenuRegistrado(Usuario& user, Horario horario, Eventos nuevo_evento) {
-  bool salir = false;
-  int opcion {0};
-  bool apuntar;
-  while (!salir) {
+  int opcion;
+  while (opcion != 0) {
     std::cout << "\nElija la opción que desee realizar:\n"
               << "(0) Salir\n"
               << "(1) Mostrar libros disponibles 📖\n"
@@ -71,7 +79,7 @@ void MenuRegistrado(Usuario& user, Horario horario, Eventos nuevo_evento) {
     switch(opcion) {
       case 0:
         system("clear");
-        salir = true;
+        return;
         break;
       case 1: 
         system("clear");

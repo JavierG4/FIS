@@ -27,6 +27,7 @@ Eventos::Eventos() {
 bool Eventos::apuntarse(Usuario& usuario) {
   std::cout << "Escriba el nombre del evento al que desea apuntarse: ";
   std::string nombre_del_evento;
+  std::cin.ignore();
   std::getline(std::cin, nombre_del_evento);
   for (auto& evento : lista_eventos_) {
     if (evento[0] == nombre_del_evento && std::stoi(evento[3]) < std::stoi(evento[2])) {

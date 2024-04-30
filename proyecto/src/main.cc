@@ -7,7 +7,7 @@
 
 #include "menu.h"
 
-#include "seguridad.h"
+// #include "seguridad.h"
 #include "usuario.h"
 
 #include "horario.h"
@@ -20,24 +20,10 @@ int main() {
   // Información de la biblioteca
   get_informacion();
   // Menú
-  bool sesioniniciada = false;
   Horario horario;
   Eventos nuevo_evento;
   std::cout << std::endl << "¡Buenos días!" << std::endl;
-  if (MostrarMenu(sesioniniciada)) {
-    // Seguridad
-    Usuario user;
-    Seguridad seguridad;
-    bool resultado = seguridad.MenuSeguridad(user);
-    if (!resultado) {
-      std::cout << "Error de inicio" << std::endl;
-    } else {
-      // Usuario
-      system("clear");
-      std::cout << "Bienvenido/a " << user.get_username() << std::endl;
-      MenuRegistrado(user, horario, nuevo_evento);
-    }
-  }
+  MostrarMenu(horario);
   //guardar horario, hacer siempre antes de que acabe el programa
   horario.guardar_horario();
   nuevo_evento.guardar_eventos(); //hacer siempre 
