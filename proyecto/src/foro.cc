@@ -8,7 +8,7 @@ void MenuForo(Usuario& user) {
     std::cout << "\t(0) Salir" << std::endl;
     std::cout << "\t(1) Mostrar discusiones" << std::endl;
     std::cout << "\t(2) Seleccionar discusión" << std::endl;
-    std::cout << "\t(3) Crear discusión" << std::endl;
+    std::cout << "\t(3) Crear discusión\n\t";
     std::cin >> option;
     switch (option) {
       case 1:
@@ -60,7 +60,7 @@ void Foro::SeleccionarDiscusion(Usuario& usuario) {
   while (option != 0) {
     std::cout << "\t(0) Salir" << std::endl;
     std::cout << "\t(1) Leer discusión" << std::endl;
-    std::cout << "\t(2) Escribir mensaje" << std::endl;
+    std::cout << "\t(2) Escribir mensaje\n\t";
     std::cin >> option;
     switch (option) {
       case 1:

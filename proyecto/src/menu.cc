@@ -10,9 +10,8 @@ void MostrarMenu(Horario horario) {
               << "\t(1) Mostrar libros 📚\n"
               << "\t(2) Ver eventos\n"
               << "\t(3) Mostrar horarios 📅\n"
-              << "\t(4) Iniciar sesión 👤\n"
-              << "\t(5) Ayuda ❓";
-    std::cout << std::endl;
+              << "\t(4) Iniciar sesión / Registrarse 👤\n"
+              << "\t(5) Ayuda ❓\n\t";
     std::cin >> opcion;
     switch(opcion) {
       case 0:
@@ -59,6 +58,7 @@ void MostrarMenu(Horario horario) {
 
 void MenuRegistrado(Usuario& user, Horario horario, Eventos nuevo_evento) {
   int opcion;
+  imprimir_recordatorio(user);
   while (opcion != 0) {
     std::cout << GREEN << "\nElija la opción que desee realizar:\n" << RESET
               << "\t(0) Salir\n"
@@ -70,8 +70,8 @@ void MenuRegistrado(Usuario& user, Horario horario, Eventos nuevo_evento) {
               << "\t(6) Ver aulas reservadas\n"
               << "\t(7) Anular reserva de aula 🪑\n"
               << "\t(8) Devolver libro 📕\n"
-              << "\t(9) Ver foro 🗣️";
-    std::cout << std::endl;
+              << "\t(9) Ver foro 🗣️\n"
+              << "\t(10) Ayuda ❓\n\t";
     std::cin >> opcion;
     switch(opcion) {
       case 0:
@@ -131,6 +131,11 @@ void MenuRegistrado(Usuario& user, Horario horario, Eventos nuevo_evento) {
       case 9:
         system("clear");
         MenuForo(user);
+        break;
+
+      case 10:
+        system("clear");
+        UsuarioIdentificadoFAQ();
         break;
       default: 
         system("clear");

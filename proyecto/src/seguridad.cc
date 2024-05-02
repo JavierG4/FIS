@@ -108,7 +108,7 @@ bool Seguridad::MenuSeguridad(Usuario& user) {
     std::cout << GREEN << "Seleccione la opción que desea realizar:\n" << RESET
               << "\t(0) Salir\n"
               << "\t(1) Iniciar sesión\n" 
-              << "\t(2) Registrarse" << std::endl;
+              << "\t(2) Registrarse\n\t";
     std::cin >> decision;
     system("clear");
     if (std::cin.fail()) {
