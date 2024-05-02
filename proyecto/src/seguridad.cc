@@ -33,8 +33,9 @@ bool Seguridad::Sign_in(std::string username, std::string password, Usuario& use
     std::istringstream iss(line);
     std::string username1;
     iss >> username1;
-    std::cout << username1 << " " << username << std::endl;
+    //std::cout << username1 << " " << username << std::endl;
     if (username1 == username) {
+      system("clear");
       std::cout << "Ya existe ese usuario o alguien con ese username " << std::endl;
       return false;
     }
@@ -109,6 +110,7 @@ bool Seguridad::MenuSeguridad(Usuario& user) {
               << "(0) Iniciar sesión\n" 
               << "(1) Registrarse" << std::endl;
     std::cin >> decision;
+    system("clear");
     if (std::cin.fail()) {
         std::cin.clear(); // limpia el estado de error
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // descarta la entrada incorrecta
@@ -121,13 +123,13 @@ bool Seguridad::MenuSeguridad(Usuario& user) {
       std::cout << "Escriba su usuario " << std::endl;
       std::cin >> username;
       std::string password;
-      std::cout << "Escriba su contraseña" << std::endl;
+      std::cout << "\nEscriba su contraseña" << std::endl;
       std::cin >> password;
       resultado = Log_in(username, password, user);
       contador++;
     }
     if (resultado == false) {
-      std::cout << "Te has quedado sin intentos" << std::endl;
+      std::cout << "\nTe has quedado sin intentos" << std::endl;
       return false;
     } else {
       return true;
@@ -139,9 +141,9 @@ bool Seguridad::MenuSeguridad(Usuario& user) {
     std::string password = "";
     std::string password1 = "e";
     while (password != password1) { // sign in (registro
-      std::cout << "Escriba su contraseña" << std::endl;
+      std::cout << "\nEscriba su contraseña" << std::endl;
       std::cin >> password;
-      std::cout << "Escriba su contraseña de nuevo" << std::endl;
+      std::cout << "\nEscriba su contraseña de nuevo" << std::endl;
       std::cin >> password1;
     }
     resultado = Sign_in(username, password, user);
@@ -166,7 +168,7 @@ bool Seguridad::Log_in(std::string username, std::string password, Usuario& user
   std::string filename = "../base_de_datos/usuarios/" + username + "/" + username + ".txt";
   std::ifstream userFile(filename);
   if(!userFile.is_open()) {
-    std::cout << "No se ha podido abrir el archivo" << std::endl;
+    std::cout << "\nUsuario inexistente\n" << std::endl;
     return false;
   }
   userFile >> user;
@@ -183,14 +185,14 @@ bool Seguridad::Log_in(std::string username, std::string password, Usuario& user
       //std::cout << password1 << std::endl;
       //std::cout << password << std::endl;
       if (password1 == final_passwd) {
-        std::cout << "Has iniciado sesión" << std::endl;
+        std::cout << "\nHas iniciado sesión" << std::endl;
         return true;
       } else {
-        std::cout << "Contraseña incorrecta" << std::endl;
+        std::cout << "\nContraseña incorrecta\n" << std::endl;
         return false;
       }
     }
   }
-  std::cout << "No existe ese usuario" << std::endl;
+  std::cout << "\nNo existe ese usuario" << std::endl;
   return false;
 }
