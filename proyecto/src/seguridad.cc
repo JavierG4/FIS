@@ -100,15 +100,15 @@ bool Seguridad::Sign_in(std::string username, std::string password, Usuario& use
 }
 
 bool Seguridad::MenuSeguridad(Usuario& user) {
-  std::cout << "Buenos días! " << std::endl;
+  std::cout << "¡Buenos días!" << std::endl;
   bool resultado = false;
   int contador = 0;
   int decision = -1;
-  do {
-    std::cout << "Seleccione la opción que desea realizar:\n"
-              //<< "(0) Salir\n"
-              << "(0) Iniciar sesión\n" 
-              << "(1) Registrarse" << std::endl;
+  while (decision != 0) {
+    std::cout << GREEN << "Seleccione la opción que desea realizar:\n" << RESET
+              << "\t(0) Salir\n"
+              << "\t(1) Iniciar sesión\n" 
+              << "\t(2) Registrarse" << std::endl;
     std::cin >> decision;
     system("clear");
     if (std::cin.fail()) {
@@ -116,38 +116,42 @@ bool Seguridad::MenuSeguridad(Usuario& user) {
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // descarta la entrada incorrecta
         decision = -1;
     }
-  } while (decision != 0 && decision != 1);
-  if ( decision == 0 ) { // log in
-    while (resultado == false && contador < 3 ) { 
+    if ( decision == 1 ) { // log in
+      while (resultado == false && contador < 3 ) { 
+        std::string username;
+        std::cout << "Escriba su usuario " << std::endl;
+        std::cin >> username;
+        std::string password;
+        std::cout << "\nEscriba su contraseña" << std::endl;
+        std::cin >> password;
+        resultado = Log_in(username, password, user);
+        contador++;
+      }
+      if (resultado == false) {
+        std::cout << "\nTe has quedado sin intentos" << std::endl;
+        return false;
+      } else {
+        return true;
+      }
+    } else if (decision == 2) {
       std::string username;
       std::cout << "Escriba su usuario " << std::endl;
       std::cin >> username;
-      std::string password;
-      std::cout << "\nEscriba su contraseña" << std::endl;
-      std::cin >> password;
-      resultado = Log_in(username, password, user);
-      contador++;
+      std::string password = "";
+      std::string password1 = "e";
+      while (password != password1) { // sign in (registro
+        std::cout << "\nEscriba su contraseña" << std::endl;
+        std::cin >> password;
+        std::cout << "\nEscriba su contraseña de nuevo" << std::endl;
+        std::cin >> password1;
+      }
+      resultado = Sign_in(username, password, user);
+      if (!resultado) {
+        std::cout << "Error de inicio" << std::endl;
+      } else {
+        return true;
+      }
     }
-    if (resultado == false) {
-      std::cout << "\nTe has quedado sin intentos" << std::endl;
-      return false;
-    } else {
-      return true;
-    }
-  } else {
-    std::string username;
-    std::cout << "Escriba su usuario " << std::endl;
-    std::cin >> username;
-    std::string password = "";
-    std::string password1 = "e";
-    while (password != password1) { // sign in (registro
-      std::cout << "\nEscriba su contraseña" << std::endl;
-      std::cin >> password;
-      std::cout << "\nEscriba su contraseña de nuevo" << std::endl;
-      std::cin >> password1;
-    }
-    resultado = Sign_in(username, password, user);
-    return resultado;
   }
 }
 

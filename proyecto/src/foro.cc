@@ -4,11 +4,11 @@ void MenuForo(Usuario& user) {
   Foro foro;
   int option = 5;
   while (option != 0) {
-    std::cout << "Foro:\n";
-    std::cout << "(0) Salir" << std::endl;
-    std::cout << "(1) Mostrar discusiones" << std::endl;
-    std::cout << "(2) Seleccionar discusión" << std::endl;
-    std::cout << "(3) Crear discusión" << std::endl;
+    std::cout << GREEN << "\nForo:\n" << RESET;
+    std::cout << "\t(0) Salir" << std::endl;
+    std::cout << "\t(1) Mostrar discusiones" << std::endl;
+    std::cout << "\t(2) Seleccionar discusión" << std::endl;
+    std::cout << "\t(3) Crear discusión" << std::endl;
     std::cin >> option;
     switch (option) {
       case 1:
@@ -52,15 +52,15 @@ void Foro::MostrarDiscusiones() {
 
 void Foro::SeleccionarDiscusion(Usuario& usuario) {
   MostrarDiscusiones();
-  std::cout << "Selecciona el numero de una discusión: ";
+  std::cout << GREEN << "\nSelecciona el número de una discusión: " << RESET;
   int index;
   std::cin >> index;
   std::cout << "Discusión seleccionada: " << discusiones_[index].GetTema() << std::endl;
   int option = 5;
   while (option != 0) {
-    std::cout << "(0) Salir" << std::endl;
-    std::cout << "(1) Leer discusión" << std::endl;
-    std::cout << "(2) Escribir mensaje" << std::endl;
+    std::cout << "\t(0) Salir" << std::endl;
+    std::cout << "\t(1) Leer discusión" << std::endl;
+    std::cout << "\t(2) Escribir mensaje" << std::endl;
     std::cin >> option;
     switch (option) {
       case 1:

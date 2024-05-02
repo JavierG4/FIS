@@ -6,6 +6,9 @@
 #include <sstream>
 #include <limits>
 
+#define GREEN "\033[32m"
+#define RESET "\033[0m"
+
 class Seguridad {
  public:
    bool Sign_in(std::string, std::string, Usuario&);

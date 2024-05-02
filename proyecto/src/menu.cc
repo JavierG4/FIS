@@ -5,13 +5,13 @@ void MostrarMenu(Horario horario) {
   int opcion;
   Eventos nuevo_evento;
   while (!salir) {
-    std::cout << "\nElija la opción que desee realizar:\n"
-              << "(0) Salir\n"
-              << "(1) Mostrar libros 📚\n"
-              << "(2) Ver eventos\n"
-              << "(3) Mostrar horarios 📅\n"
-              << "(4) Iniciar sesión 👤\n"
-              << "(5) Ayuda ❓";
+    std::cout << GREEN << "\nElija la opción que desee realizar:\n" << RESET
+              << "\t(0) Salir\n"
+              << "\t(1) Mostrar libros 📚\n"
+              << "\t(2) Ver eventos\n"
+              << "\t(3) Mostrar horarios 📅\n"
+              << "\t(4) Iniciar sesión 👤\n"
+              << "\t(5) Ayuda ❓";
     std::cout << std::endl;
     std::cin >> opcion;
     switch(opcion) {
@@ -37,9 +37,7 @@ void MostrarMenu(Horario horario) {
         Usuario user;
         Seguridad seguridad;
         bool resultado = seguridad.MenuSeguridad(user);
-        if (!resultado) {
-          std::cout << "Error de inicio" << std::endl;
-        } else {
+        if (resultado) {
           // Usuario
           system("clear");
           std::cout << "Bienvenido/a " << user.get_username() << std::endl;
@@ -50,7 +48,7 @@ void MostrarMenu(Horario horario) {
       }
       case 5:
         system("clear");
-        // Ayuda
+        UsuarioNoIdentificadoFAQ();
         break;
       default: 
         system("clear");
@@ -62,20 +60,19 @@ void MostrarMenu(Horario horario) {
 void MenuRegistrado(Usuario& user, Horario horario, Eventos nuevo_evento) {
   int opcion;
   while (opcion != 0) {
-    std::cout << "\nElija la opción que desee realizar:\n"
-              << "(0) Salir\n"
-              << "(1) Mostrar libros disponibles 📖\n"
-              << "(2) Reservar libros 📝📕\n"
-              << "(3) Apuntarse a un evento\n"
-              << "(4) Mostrar horario aulas\n"
-              << "(5) Reservar aulas 📝🪑\n"
-              << "(6) Ver aulas reservadas\n"
-              << "(7) Anular reserva de aula 🪑\n"
-              << "(8) Devolver libro 📕\n"
-              << "(9) Ver foro 🗣️";
+    std::cout << GREEN << "\nElija la opción que desee realizar:\n" << RESET
+              << "\t(0) Salir\n"
+              << "\t(1) Mostrar libros disponibles 📖\n"
+              << "\t(2) Reservar libros 📝📕\n"
+              << "\t(3) Apuntarse a un evento\n"
+              << "\t(4) Mostrar horario aulas\n"
+              << "\t(5) Reservar aulas 📝🪑\n"
+              << "\t(6) Ver aulas reservadas\n"
+              << "\t(7) Anular reserva de aula 🪑\n"
+              << "\t(8) Devolver libro 📕\n"
+              << "\t(9) Ver foro 🗣️";
     std::cout << std::endl;
     std::cin >> opcion;
-
     switch(opcion) {
       case 0:
         system("clear");

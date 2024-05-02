@@ -1,5 +1,6 @@
 #include <iostream>
-#include "../library/usuario.h"
+
+#include "usuario.h"
 #include "horario.h"
 #include "aulas.h"
 #include "libros.h"
@@ -9,6 +10,10 @@
 #include "discusion.h"
 #include "foro.h"
 #include "seguridad.h"
+#include "faq.h"
+
+#define GREEN "\033[32m"
+#define RESET "\033[0m"
 
 void MenuForo(Usuario&);
 void MostrarMenu(Horario);
