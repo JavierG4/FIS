@@ -8,7 +8,8 @@
 #include "eventos.h"
 #include "discusion.h"
 #include "foro.h"
+#include "seguridad.h"
 
 void MenuForo(Usuario&);
-bool MostrarMenu(bool);
+void MostrarMenu(Horario);
 void MenuRegistrado(Usuario&, Horario, Eventos);
