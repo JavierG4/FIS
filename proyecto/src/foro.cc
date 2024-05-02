@@ -4,23 +4,27 @@ void MenuForo(Usuario& user) {
   Foro foro;
   int option = 5;
   while (option != 0) {
-    std::cout << "Foro\n";
+    std::cout << "Foro:\n";
+    std::cout << "(0) Salir" << std::endl;
     std::cout << "(1) Mostrar discusiones" << std::endl;
     std::cout << "(2) Seleccionar discusión" << std::endl;
     std::cout << "(3) Crear discusión" << std::endl;
-    std::cout << "(0) Salir" << std::endl;
     std::cin >> option;
     switch (option) {
       case 1:
+        system("clear");
         foro.MostrarDiscusiones();
         break;
       case 2:
+        system("clear");
         foro.SeleccionarDiscusion(user);
         break;
       case 3:
+        system("clear");
         foro.CrearDiscusion();
         break;
       case 0:
+        system("clear");
         return;
         break;
       default:
@@ -54,9 +58,9 @@ void Foro::SeleccionarDiscusion(Usuario& usuario) {
   std::cout << "Discusión seleccionada: " << discusiones_[index].GetTema() << std::endl;
   int option = 5;
   while (option != 0) {
+    std::cout << "(0) Salir" << std::endl;
     std::cout << "(1) Leer discusión" << std::endl;
     std::cout << "(2) Escribir mensaje" << std::endl;
-    std::cout << "(0) Salir" << std::endl;
     std::cin >> option;
     switch (option) {
       case 1:

@@ -104,7 +104,10 @@ bool Seguridad::MenuSeguridad(Usuario& user) {
   int contador = 0;
   int decision = -1;
   do {
-    std::cout << "Desea iniciar sesión o registrarse / 0 = (log in) / 1 = (sign in) " << std::endl;
+    std::cout << "Seleccione la opción que desea realizar:\n"
+              //<< "(0) Salir\n"
+              << "(0) Iniciar sesión\n" 
+              << "(1) Registrarse" << std::endl;
     std::cin >> decision;
     if (std::cin.fail()) {
         std::cin.clear(); // limpia el estado de error

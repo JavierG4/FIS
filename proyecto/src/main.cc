@@ -16,6 +16,7 @@
 #include "eventos.h" //eventos: nuevo
 #include "ver_eventos.h" //ver eventos: nuevo
 int main() {
+  system("clear");
   std::cout << std::endl;
   // Información de la biblioteca
   get_informacion();
