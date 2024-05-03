@@ -1,5 +1,4 @@
 #include "../library/libros.h"
-#include "../library/estanteria.h"
 
 using namespace std;
 
@@ -124,7 +123,6 @@ void mostrar_todos_libros() {
             cout << nombre_archivo << endl;
         }
     }
-    cout << "debug" << endl;
 }
 
 void mostrar_libros_disponibles() {
