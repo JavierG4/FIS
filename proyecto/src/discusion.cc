@@ -22,4 +22,7 @@ void Discusion::Escribir(Usuario& usuario) {
   std::getline(std::cin, line);
   file << usuario.get_username() << ": " << std::endl;
   file << line << std::endl;
+  file << std::endl;
+  file.close();
+  system("clear");
 }
